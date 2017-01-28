@@ -16,7 +16,9 @@
 #include <string>
 #include <cassert>
 
-#include <termios.h>
+#include <termios.h>  // Used for UART
+#include <fcntl.h>    // Used for UART
+#include <unistd.h>   // Used for UART
 
 #include "serial_errors.h"
 
@@ -113,6 +115,9 @@ class port {
     void setStopBits(std::string iStopBits);
     unsigned char getStopBits();
     std::string getStopBits_Str();
+
+    bool doOpen ();
+    bool doClose ();
 
     serial_error* getError ();
 
@@ -403,6 +408,27 @@ void port::setStopBits (std::string iStopBits) {
 }
 unsigned char port::getStopBits ()   { return port::stop_bits;     }
 std::string port::getStopBits_Str () { return port::stop_bits_str; }
+
+bool port::doOpen () {
+	if (port::name.compare("") == 0) {
+		std::cout << ERROR + NAME + IS + EMPTY << std::endl;
+	} else {
+		port::fstream = open (port::name.c_str(), O_RDWR | O_NOCTTY | O_NDELAY);
+/** @test */std::cout << "fstream: " << to_string(port::fstream) << " | port::name.c_str(): " << port::name.c_str() << std::endl;
+	}
+	if (port::fstream == -1) {
+		port::is_open = false;
+	} else {
+		port::is_open = true;
+	}
+	return port::is_open;
+}
+bool port::doClose () {
+	close(port::fstream);
+	port::fstream = -1;
+	port::is_open = false;
+	return port::is_open;
+}
 
 serial_error* port::getError()       { return port::error; }
 

@@ -34,5 +34,7 @@ int main(int argc, char **argv) {
 
   std::cout << "+++++++ END STATUS +++++++" << std::endl;
   p.show_all_options();
+  p.doOpen();
+  p.doClose();
   return 0;
 }
