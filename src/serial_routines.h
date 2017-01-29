@@ -123,7 +123,10 @@ class port {
     bool doClose ();
     int saveSetup ();
     int restoreSetup ();
-    // c_iflag flag constants for [ INPUT ] -> SET
+
+    serial_error* getError ();
+
+    // c_iflag flag constants for [ INPUT ] -> SET -> GET
     int setIGNBRK (bool v);    bool getIGNBRK ();
     int setBRKINT (bool v);    bool getBRKINT ();
     int setIGNPAR (bool v);    bool getIGNPAR ();
@@ -137,8 +140,6 @@ class port {
     int setIXOFF  (bool v);    bool getIXOFF  ();
     int setIXANY  (bool v);    bool getIXANY  ();
     int setIUTF8  (bool v);    bool getIUTF8  ();
-    serial_error* getError ();
-
     // c_iflag flag constants for [ INPUT ]
     class inFlags {
     public:
@@ -156,6 +157,34 @@ class port {
     	bool ixany;         // IXANY    = (XSI) Typing any character will restart stopped output.
     	bool iutf8;         // IUTF8    = (since Linux 2.6.4) (not in POSIX) Input is UTF8; this allows character-erase to be correctly performed in cooked mode
     }inFlags;
+
+    // c_oflag flag constants for [ OUTPUT ] -> SET -> GET
+    int setOPOST  (bool v);    bool getOPOST  ();
+    int setONLCR  (bool v);    bool getONLCR  ();
+    int setOCRNL  (bool v);    bool getOCRNL  ();
+    int setONOCR  (bool v);    bool getONOCR  ();
+    int setONLRET (bool v);    bool getONLRET ();
+    int setOFILL  (bool v);    bool getOFILL  ();
+    int setNLDLY  (std::string inStr);    std::string getNLDLY  ();
+    int setCRDLY  (std::string inStr);    std::string getCRDLY  ();
+    int setTABDLY (std::string inStr);    std::string getTABDLY ();
+    int setVTDLY  (std::string inStr);    std::string getVTDLY  ();
+    int setFFDLY  (std::string inStr);    std::string getFFDLY  ();
+    // c_oflag flag constants for [ OUTPUT ]
+    class outFlags {
+    public:
+        bool opost;         // OPOST    = Enable implementation-defined output processing
+        bool onlcr;         // ONLCR    = (XSI) Map NL to CR-NL on output
+        bool ocrnl;         // OCRNL    = Map CR to NL on output
+        bool onocr;         // ONOCR    = Don't output CR at column 0
+        bool onlret;        // ONLRET   = Don't output CR
+        bool ofill;         // OFILL    = Send fill characters for a delay, rather than using a timed delay
+        std::string nldly;  // NLDLY   = Newline delay mask. Values are NL0 and NL1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+        std::string crdly;  // CRDLY   = Carriage return delay mask. Values are CR0, CR1, CR2, or CR3. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+        std::string tabdly; // TABDLY  = Horizontal tab delay mask. Values are TAB0, TAB1, TAB2, TAB3 (or XTABS). A value of TAB3, that is, XTABS, expands tabs to spaces (with tab stops every eight columns). [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+        std::string vtdly;  // VTDLY   = Vertical tab delay mask. Values are VT0 or VT1
+        std::string ffdly;  // FFDLY   = Form feed delay mask.  Values are FF0 or FF1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+    }outFlags;
   private:
 
     int fstream;
@@ -170,18 +199,6 @@ class port {
     std::string stop_bits_str;
     unsigned char stop_bits;
 
-    // c_oflag flag constants for [ OUTPUT ]
-    bool opost;         // OPOST    = Enable implementation-defined output processing
-    bool onlcr;         // ONLCR    = (XSI) Map NL to CR-NL on output
-    bool ocrnl;         // OCRNL    = Map CR to NL on output
-    bool onocr;         // ONOCR    = Don't output CR at column 0
-    bool onlret;        // ONLRET   = Don't output CR
-    bool ofill; // OFILL    = Send fill characters for a delay, rather than using a timed delay
-    std::string nldly;  // NLDLY   = Newline delay mask. Values are NL0 and NL1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-    std::string crdly;  // CRDLY   = Carriage return delay mask. Values are CR0, CR1, CR2, or CR3. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-    std::string tabdly; // TABDLY  = Horizontal tab delay mask. Values are TAB0, TAB1, TAB2, TAB3 (or XTABS). A value of TAB3, that is, XTABS, expands tabs to spaces (with tab stops every eight columns). [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-    std::string vtdly;  // VTDLY   = Vertical tab delay mask. Values are VT0 or VT1
-    std::string ffdly;  // FFDLY   = Form feed delay mask.  Values are FF0 or FF1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
     //bool olcuc;    // OLCUC    = (not in POSIX) Map lowercase characters to uppercase on output
     //bool ofdel;    // OFDEL    = (Not implemented on Linux.) Fill character is ASCII DEL (0177). If unset, fill character is ASCII NUL ('\0')
     //std::string bsdly;  // BSDLY   = (Has never been implemented.) Backspace delay mask. Values are BS0 or BS1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
@@ -825,6 +842,303 @@ int port::setIUTF8 (bool v) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
 	} else { port::inFlags.iutf8 = (v) ? true : false; }
 	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setOPOST (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.OPOST.
+ * If this bit is set, output data is processed in some unspecified way
+ * so that it is displayed appropriately on the terminal device.
+ * This typically includes mapping newline characters ('\n') onto
+ * carriage return and linefeed pairs.
+ * If this bit isn't set, the characters are transmitted as-is.
+ * */
+bool port::getOPOST () { return port::outFlags.opost; }
+int port::setOPOST (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OPOST)) : (new_attr.c_oflag & (OPOST));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.opost = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setONLCR (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ONLCR.
+ * If this bit is set, convert the newline character on output into
+ * a pair of characters, carriage return followed by linefeed.
+ * */
+bool port::getONLCR () { return port::outFlags.onlcr; }
+int port::setONLCR (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONLCR)) : (new_attr.c_oflag & (ONLCR));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.onlcr = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setOCRNL (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.OCRNL.
+ * If this bit is set, convert the carriage return to linefeed.
+ * */
+bool port::getOCRNL () { return port::outFlags.ocrnl; }
+int port::setOCRNL (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OCRNL)) : (new_attr.c_oflag & (OCRNL));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.ocrnl = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setONOCR (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ONOCR.
+ * If this bit is set, don't output carriage return at column 0.
+ * */
+bool port::getONOCR () { return port::outFlags.onocr; }
+int port::setONOCR (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONOCR)) : (new_attr.c_oflag & (ONOCR));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.onocr = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setONLRET (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ONLRET.
+ * If this bit is set, don't output carriage return at all.
+ * */
+bool port::getONLRET () { return port::outFlags.onlret; }
+int port::setONLRET (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONLRET)) : (new_attr.c_oflag & (ONLRET));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.onlret = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setOFILL (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.OFILL.
+ * If this bit is set, send fill characters for a delay, rather than using a timed delay.
+ * */
+bool port::getOFILL () { return port::outFlags.ofill; }
+int port::setOFILL (bool v) {
+	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OFILL)) : (new_attr.c_oflag & (OFILL));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.ofill = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setNLDLY (std::string inStr)
+ * \param std::string values are NL0 and NL1
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.NLDLY.
+ * Newline delay mask. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+ * NL0 = No delay.
+ * NL1 = 0.10 seconds delay.
+ * If ONLRET is set, then carriage-return delays are used instead of newline delays.
+ * If OFILL  is set, then two fill characters are transmitted.
+ * */
+std::string port::getNLDLY () { return port::outFlags.nldly; }
+int port::setNLDLY (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::outFlags.nldly = lStr;
+	if (inStr.compare("NL0") == 0 || inStr.compare("nl0") == 0 ||
+		inStr.compare("Nl0") == 0 || inStr.compare("nL0") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | NL0;
+		result = 0; lStr = "NL0";
+	} else if (inStr.compare("NL1") == 0 || inStr.compare("nl1") == 0 ||
+			   inStr.compare("Nl1") == 0 || inStr.compare("nL1") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | NL1;
+		result = 0; lStr = "NL1";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.nldly = lStr; }
+	return result;
+}
+/**
+ * !
+ * \brief function int port::setCRDLY (std::string inStr)
+ * \param std::string inStr values are CR0, CR1, CR2 and CR3
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.CRDLY.
+ * Delay associated with carriage-return character.
+ * CR0 = No delay.
+ * CR1 = Delay dependent on column position, or if OFILL is set then two fill characters are transmitted.
+ * CR2 = 0.10 seconds delay, or if OFILL is set then four fill characters are transmitted.
+ * CR3 = 0.15 seconds delay.
+ * */
+std::string port::getCRDLY () { return port::outFlags.crdly; }
+int port::setCRDLY (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::outFlags.crdly = lStr;
+	if (inStr.compare("CR0") == 0 || inStr.compare("cr0") == 0 ||
+		inStr.compare("Cr0") == 0 || inStr.compare("cR0") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | CR0;
+		result = 0; lStr = "CR0";
+	} else if (inStr.compare("CR1") == 0 || inStr.compare("cr1") == 0 ||
+			   inStr.compare("Cr1") == 0 || inStr.compare("cR1") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | CR1;
+		result = 0; lStr = "CR1";
+	} else if (inStr.compare("CR2") == 0 || inStr.compare("cr2") == 0 ||
+			   inStr.compare("Cr2") == 0 || inStr.compare("cR2") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | CR2;
+		result = 0; lStr = "CR2";
+	} else if (inStr.compare("CR3") == 0 || inStr.compare("cr3") == 0 ||
+			   inStr.compare("Cr3") == 0 || inStr.compare("cR3") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | CR3;
+		result = 0; lStr = "CR3";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.crdly = lStr; }
+	return result;
+}
+/**
+ * !
+ * \brief function int port::setTABDLY (std::string inStr)
+ * \param std::string inStr values are TAB0, TAB1, TAB2 and TAB3
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.TABDLY.
+ * Delay associated with tab character.
+ * TAB0 = No horizontal tab processing.
+ * TAB1 = Delay dependent on column position, or if OFILL is set then two fill characters are transmitted.
+ * TAB2 = 0.10 seconds delay, or if OFILL is set then two fill characters are transmitted.
+ * TAB3 = Tabs are expanded into spaces.
+ * */
+std::string port::getTABDLY () { return port::outFlags.tabdly; }
+int port::setTABDLY (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::outFlags.tabdly = lStr;
+	if (inStr.compare("TAB0") == 0 || inStr.compare("Tab0") == 0 || inStr.compare("tab0") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | TAB0;
+		result = 0; lStr = "TAB0";
+	} else if (inStr.compare("TAB1") == 0 || inStr.compare("Tab1") == 0 || inStr.compare("tab1") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | TAB1;
+		result = 0; lStr = "TAB1";
+	} else if (inStr.compare("TAB2") == 0 || inStr.compare("Tab2") == 0 || inStr.compare("tab2") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | TAB2;
+		result = 0; lStr = "TAB2";
+	} else if (inStr.compare("TAB3") == 0 || inStr.compare("Tab3") == 0 || inStr.compare("tab3") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | TAB3;
+		result = 0; lStr = "TAB3";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.tabdly = lStr; }
+	return result;
+}
+/**
+ * !
+ * \brief function int port::setVTDLY (std::string inStr)
+ * \param std::string inStr values are VT0, VT1
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VTDLY.
+ * Delay associated with vertical-tab processing.
+ * VT0 = No delay.
+ * VT1 = 2 seconds delay.
+ * */
+std::string port::getVTDLY () { return port::outFlags.vtdly; }
+int port::setVTDLY (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::outFlags.vtdly = lStr;
+	if (inStr.compare("VT0") == 0 || inStr.compare("vt0") == 0 ||
+		inStr.compare("Vt0") == 0 || inStr.compare("vT0") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | VT0;
+		result = 0; lStr = "VT0";
+	} else if (inStr.compare("VT1") == 0 || inStr.compare("vt1") == 0 ||
+			   inStr.compare("Vt1") == 0 || inStr.compare("vT1") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | VT1;
+		result = 0; lStr = "VT1";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.vtdly = lStr; }
+	return result;
+}
+/**
+ * !
+ * \brief function int port::setFFDLY (std::string inStr)
+ * \param std::string inStr values are FF0, FF1
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.FFDLY.
+ * Delay associated with form-feed processing.
+ * FF0 = No delay.
+ * FF1 = 2 seconds delay.
+ * */
+std::string port::getFFDLY () { return port::outFlags.ffdly; }
+int port::setFFDLY (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::outFlags.ffdly = lStr;
+	if (inStr.compare("FF0") == 0 || inStr.compare("ff0") == 0 ||
+		inStr.compare("Ff0") == 0 || inStr.compare("fF0") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | FF0;
+		result = 0; lStr = "FF0";
+	} else if (inStr.compare("FF1") == 0 || inStr.compare("ff1") == 0 ||
+			   inStr.compare("Ff1") == 0 || inStr.compare("fF1") == 0) {
+		new_attr.c_oflag = new_attr.c_oflag | FF1;
+		result = 0; lStr = "FF1";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::outFlags.ffdly = lStr; }
+	return result;
 }
 
 serial_error* port::getError()       { return port::error; }
