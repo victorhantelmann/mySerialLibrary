@@ -203,7 +203,30 @@ class port {
     	bool parodd;        // PARODD   = If set, then parity for input and output is ODD; otherwise EVEN parity is used
     	bool hupcl;         // HUPCL    = (hang up) Lower modem control lines after last process closes the device
     	bool clocal;        // CLOCAL   = Ignore modem control lines
-    }controlFlags;
+    } controlFlags;
+    // c_lflag flag constants for [ LOCAL MODES ] -> SET -> GET
+    int setISIG   (bool v);    bool getISIG   ();
+    int setICANON (bool v);    bool getICANON ();
+    int setECHO   (bool v);    bool getECHO   ();
+    int setECHOE  (bool v);    bool getECHOE  ();
+    int setECHOK  (bool v);    bool getECHOK  ();
+    int setECHONL (bool v);    bool getECHONL ();
+    int setNOFLSH (bool v);    bool getNOFLSH ();
+    int setTOSTOP (bool v);    bool getTOSTOP ();
+    int setIEXTEN (bool v);    bool getIEXTEN ();
+    // c_lflag flag constants for [ LOCAL MODES ]
+    class localFlags {
+    public:
+    	bool isig;          // ISIG     = When any of the characters INTR, QUIT, SUSP, or DSUSP are received, generate the corresponding signal
+    	bool icanon;        // ICANON   = Enable canonical mode
+    	bool echo;          // ECHO     = Echo input characters
+    	bool echoe;         // ECHOE    = If ICANON is also set, the ERASE character erases the preceding input character, and WERASE erases the preceding word
+    	bool echok;         // ECHOK    = If ICANON is also set, the KILL character erases the current line
+    	bool echonl;        // ECHONL   = If ICANON is also set, echo the NL character even if ECHO is not set
+    	bool noflsh;        // NOFLSH   = Disable flushing the input and output queues when generating signals for the INT, QUIT, and SUSP characters
+    	bool tostop;        // TOSTOP   = Send the SIGTTOU signal to the process group of a background process which tries to write to its controlling terminal
+    	bool iexten;        // IEXTEN   = Enable implementation-defined input processing. This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE to be interpreted, and for the IUCLC flag to be Actionive
+    } localFlags;
   private:
 
     int fstream;
@@ -227,15 +250,6 @@ class port {
     //bool cibaud;   // CIBAUD   = (not in POSIX) (Not implemented on Linux.) Mask for input speeds. The values for the CIBAUD bits are the same as the values for the CBAUD bits, shifted left IBSHIFT bits. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool cmspar;   // CMSPAR   = (not in POSIX) Use "stick" (mark/space) parity (supported on certain serial devices): if PARODD is set, the parity bit is always 1; if PARODD is not set, then the parity bit is always 0. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool crtscts;  // CRTSCTS  = (not in POSIX) Enable RTS/CTS (hardware) flow control. [requires _BSD_SOURCE or _SVID_SOURCE]
-    // c_lflag flag constants for [ LOCAL MODES ]
-    bool isig;          // ISIG     = When any of the characters INTR, QUIT, SUSP, or DSUSP are received, generate the corresponding signal
-    bool icanon;        // ICANON   = Enable canonical mode
-    bool echo;          // ECHO     = Echo input characters
-    bool echoe;         // ECHOE    = If ICANON is also set, the ERASE character erases the preceding input character, and WERASE erases the preceding word
-    bool echok;         // ECHOK    = If ICANON is also set, the KILL character erases the current line
-    bool echonl;        // ECHONL   = If ICANON is also set, echo the NL character even if ECHO is not set
-    bool noflsh;        // NOFLSH   = Disable flushing the input and output queues when generating signals for the INT, QUIT, and SUSP characters
-    bool tostop;        // TOSTOP   = Send the SIGTTOU signal to the process group of a background process which tries to write to its controlling terminal
     //bool xcase;    // XCASE    = (not in POSIX; not supported under Linux) If ICANON is also set, terminal is uppercase only. Input is converted to lowercase, except for characters preceded by \. On output, uppercase characters are preceded by \ and lowercase characters are converted to uppercase. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
     //bool echoctl;  // ECHOCTL  = (not in POSIX) If ECHO is also set, terminal special characters other than TAB, NL, START, and STOP are echoed as ^X, where X is the character with ASCII code 0x40 greater than the special character. For example, character 0x08 (BS) is echoed as ^H. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool echoprt;  // ECHOPRT  = (not in POSIX) If ICANON and ECHO are also set, characters are printed as they are being erased. [requires _BSD_SOURCE or _SVID_SOURCE]
@@ -243,7 +257,6 @@ class port {
     //bool defecho;  // DEFECHO  = (not in POSIX) (Not implemented on Linux.) Echo only when a process is reading
     //bool flusho;   // FLUSHO   = (not in POSIX; not supported under Linux) Output is being flushed. This flag is toggled by typing the DISCARD character. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool pendin;   // PENDIN   = (not in POSIX; not supported under Linux) All characters in the input queue are reprinted when the next character is read
-    bool iexten;        // IEXTEN   = Enable implementation-defined input processing. This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE to be interpreted, and for the IUCLC flag to be Actionive
     // c_cc array that defines [ SPECIAL CHARACTERS ]
     bool veof;          // VEOF     = (004, EOT, Ctrl-D) End-of-file character (EOF). This character causes the pending tty buffer to be sent to the waiting user program without waiting for end-of-line. If it is the first character of the line, the read(2) in the user program returns 0, which signifies end-of-file. Recognized when ICANON is set, and then not passed as input
     bool veol;          // VEOL     = (0, NUL) Additional end-of-line character (EOL). Recognized when ICANON is set
@@ -1341,6 +1354,219 @@ int port::setCLOCAL (bool v) {
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
 	} else { port::controlFlags.clocal = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setISIG (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ISIG.
+ * If ISIG is set to 1, signals are generated if special control characters
+ * are entered so:
+ *   SIGINT is generated if INTR is entered;
+ *   SIGQUIT is generated if QUIT is entered;
+ *   SIGTSTP is generated if SUSP is entered and job control is supported.
+ * The special control characters are controlled by the c_cc member.
+ * If ISIG is 0, the system does not generate signals when these special
+ * control characters are entered.
+ * */
+bool getISIG () { return port::localFlags.isig; }
+int setISIG (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ISIG)) : (new_attr.c_lflag & (ISIG));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.isig = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setICANON (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ICANON.
+ * Enables canonical input processing, also called line mode.
+ * Input is not delivered to the application until an entire line has been input.
+ * The end of a line is indicated by:
+ *   - a newline,
+ *   - End Of File (EOF),
+ *   - EOL character (where the character used as the EOL character
+ *     is directed by the c_cc member of the termios structure).
+ * Canonical input processing uses the ERASE character to erase a single input
+ * character, and the KILL character to erase an entire line.
+ * The MAX_CANON value specifies the maximum number of bytes in an input line in
+ * canonical mode.
+ * If ICANON is 0, read requests take input directly from the input queue so:
+ *    the system does not wait for the user to enter a complete line. This is
+ *    called noncanonical mode. ERASE and KILL characters are not handled by
+ *    the system but passed directly to the application.
+ * See also the descriptions of MIN and TIME in the c_cc member.
+ * */
+bool getICANON () { return port::localFlags.icanon; }
+int setICANON (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ICANON)) : (new_attr.c_lflag & (ICANON));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.icanon = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setECHO (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ECHO.
+ * Echoes input characters back to the terminal.
+ * If this is bit is 0, input characters are not echoed.
+ * */
+bool getECHO () { return port::localFlags.echo; }
+int setECHO (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHO)) : (new_attr.c_lflag & (ECHO));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.echo = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setECHOE (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ECHOE.
+ * Echoes the ERASE character as an error-correcting backspace.
+ * When the user inputs an ERASE character, the terminal erases
+ * the last character in the current line from the display (if possible).
+ * The character used as the ERASE character is dictated by the c_cc member
+ * of the termios structure.
+ * ECHOE has an effect only if the ICANON bit is 1.
+ * */
+bool getECHOE () { return port::localFlags.echoe; }
+int setECHOE (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHOE)) : (new_attr.c_lflag & (ECHOE));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.echoe = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setECHOK (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ECHOK.
+ * Either causes the terminal to erase the line from the display,
+ * or echoes the KILL character followed by an \n character.
+ * ECHOK has an effect only if the ICANON bit is set to 1.
+ * */
+bool getECHOK () { return port::localFlags.echok; }
+int setECHOK (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHOK)) : (new_attr.c_lflag & (ECHOK));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.echok = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setECHOK (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.ECHOK.
+ * Echoes the newline (line-feed) character ‘\n’ even if the ECHO bit is off.
+ * ECHONL has an effect only if the ICANON bit is set to 1.
+ * */
+bool getECHONL () { return port::localFlags.echonl; }
+int setECHONL (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHONL)) : (new_attr.c_lflag & (ECHONL));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.echonl = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setNOFLSH (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.NOFLSH.
+ * If this bit is set to 1, the system does not flush the input and output queues
+ * if a signal is generated by one of the special characters described in ISIG above.
+ * If NOFLSH is set to 0, the queues are flushed if one of the special characters is found.
+ * */
+bool getNOFLSH () { return port::localFlags.noflsh; }
+int setNOFLSH (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (NOFLSH)) : (new_attr.c_lflag & (NOFLSH));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.noflsh = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setTOSTOP (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.TOSTOP.
+ * If this bit is set to 1, a SIGTTOU signal is sent to the process group of a process
+ * that tries to write to a terminal when it is not in the terminal's foreground process
+ * group. However, if the process that tries to write to the terminal is blocking or
+ * ignoring SIGTTOU signals, the system does not raise the SIGTTOU signal.
+ * If TOSTOP is 0, output from background processes is output to the current output
+ * stream, and no signal is raised.
+ * */
+bool getTOSTOP () { return port::localFlags.tostop; }
+int setTOSTOP (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (TOSTOP)) : (new_attr.c_lflag & (TOSTOP));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.tostop = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setIEXTEN (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.IEXTEN.
+ * Enables extended implementation-defined functions.
+ * These are not defined, and IEXTEN is always set to 0.
+ * If the ERASE, KILL or EOF character is preceded by a backslash character,
+ * the special character is placed in the input queue without doing the
+ * "special character" processing and the backslash is discarded.
+ * */
+bool getIEXTEN () { return port::localFlags.iexten; }
+int setIEXTEN (bool v) {
+	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (IEXTEN)) : (new_attr.c_lflag & (IEXTEN));
+	                       //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::localFlags.iexten = (v) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 
