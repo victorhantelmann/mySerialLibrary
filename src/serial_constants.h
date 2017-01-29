@@ -22,19 +22,20 @@ const std::vector<std::string> parity_str_vector (parity_str_array, parity_str_a
 static const std::string stop_bits_str_array[] = {"ONE", "ONE5", "TWO"};
 const std::vector<std::string> stop_bits_str_vector (stop_bits_str_array, stop_bits_str_array + sizeof(stop_bits_str_array) / sizeof(stop_bits_str_array[0]));
 
-const std::string ERROR     = "[ERROR]: ";
-const std::string NO_ERROR  = "ok";
-const std::string EMPTY     = "[EMPTY] ";
-const std::string WRONG     = "[WRONG] ";
-const std::string BAUD      = "[BAUD RATE] ";
-const std::string DATA_BITS = "[DATA BITS] ";
-const std::string PARITY    = "[PARITY] ";
-const std::string STOP_BITS = "[STOP BITS] ";
-const std::string IS_SET    = "[is SET] ";
-const std::string NOT_SET   = "[not SET] ";
-const std::string OSX       = "OSX ";
-const std::string WIN       = "WIN ";
-const std::string MAC       = "MAC ";
+const std::string ERROR        = "[ERROR]: ";
+const std::string NO_ERROR     = "ok";
+const std::string EMPTY        = "[EMPTY] ";
+const std::string WRONG        = "[WRONG] ";
+const std::string BAUD         = "[BAUD RATE] ";
+const std::string DATA_BITS    = "[DATA BITS] ";
+const std::string PARITY       = "[PARITY] ";
+const std::string STOP_BITS    = "[STOP BITS] ";
+const std::string IS_SET       = "[is SET] ";
+const std::string NOT_SET      = "[not SET] ";
+const std::string NOT_SUCCEDED = "[not SUCCEDED] ";
+const std::string OSX          = "OSX ";
+const std::string WIN          = "WIN ";
+const std::string MAC          = "MAC ";
 
 const std::string PORT   = "port ";
 const std::string CONFIG = "config. ";
