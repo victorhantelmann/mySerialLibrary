@@ -185,6 +185,25 @@ class port {
         std::string vtdly;  // VTDLY   = Vertical tab delay mask. Values are VT0 or VT1
         std::string ffdly;  // FFDLY   = Form feed delay mask.  Values are FF0 or FF1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
     }outFlags;
+    // c_cflag flag constants for [ CONTROL ] -> SET -> GET
+    int setCSIZE  (std::string inStr);    std::string getCSIZE  ();
+    int setCSTOPB (bool v);    bool getCSTOPB ();
+    int setCREAD  (bool v);    bool getCREAD  ();
+    int setPARENB (bool v);    bool getPARENB ();
+    int setPARODD (bool v);    bool getPARODD ();
+    int setHUPCL  (bool v);    bool getHUPCL  ();
+    int setCLOCAL (bool v);    bool getCLOCAL ();
+    // c_cflag flag constants for [ CONTROL ]
+    class controlFlags {
+    public:
+    	std::string csize;  // CSIZE    = Character size mask. Values are CS5, CS6, CS7, or CS8.
+    	bool cstopb;        // CSTOPB   = Set two stop bits, rather than one
+    	bool cread;         // CREAD    = Enable receiver
+    	bool parenb;        // PARENB   = Enable parity generation on output and parity checking for input
+    	bool parodd;        // PARODD   = If set, then parity for input and output is ODD; otherwise EVEN parity is used
+    	bool hupcl;         // HUPCL    = (hang up) Lower modem control lines after last process closes the device
+    	bool clocal;        // CLOCAL   = Ignore modem control lines
+    }controlFlags;
   private:
 
     int fstream;
@@ -202,14 +221,6 @@ class port {
     //bool olcuc;    // OLCUC    = (not in POSIX) Map lowercase characters to uppercase on output
     //bool ofdel;    // OFDEL    = (Not implemented on Linux.) Fill character is ASCII DEL (0177). If unset, fill character is ASCII NUL ('\0')
     //std::string bsdly;  // BSDLY   = (Has never been implemented.) Backspace delay mask. Values are BS0 or BS1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-    // c_cflag flag constants for [ CONTROL ]
-    std::string csize;  // CSIZE    = Character size mask. Values are CS5, CS6, CS7, or CS8.
-    bool cstopb;        // CSTOPB   = Set two stop bits, rather than one
-    bool cread;         // CREAD    = Enable receiver
-    bool parenb;        // PARENB   = Enable parity generation on output and parity checking for input
-    bool parodd;        // PARODD   = If set, then parity for input and output is ODD; otherwise EVEN parity is used
-    bool hupcl;         // HUPCL    = (hang up) Lower modem control lines after last process closes the device
-    bool clocal;        // CLOCAL   = Ignore modem control lines
     //bool cbaud;    // CBAUD    = (not in POSIX) Baud speed mask (4+1 bits).  [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool cbaudex;  // CBAUDEX  = (not in POSIX) Extra baud speed mask (1 bit), included in CBAUD. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool loblk;    // LOBLK    = (not in POSIX) (Not implemented on Linux.) Block output from a noncurrent shell layer. For use by shl (shell layers).
@@ -1139,6 +1150,198 @@ int port::setFFDLY (std::string inStr) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
 	} else { port::outFlags.ffdly = lStr; }
 	return result;
+}
+/**
+ * !
+ * \brief function int port::setCSIZE (std::string inStr)
+ * \param std::string inStr values are CS5, CS6, CS7, or CS8.
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.CSIZE.
+ * Is a collection of bits indicating the number of bits per byte
+ * (not counting the parity bit, if any).
+ * These bits specify byte size for both transmission and reception.
+ * Possible settings of CSIZE are given with the following symbols:
+ * CS5 - 5 bits per byte
+ * CS6 - 6 bits per byte
+ * CS7 - 7 bits per byte
+ * CS8 - 8 bits per byte
+ * Using z/OS UNIX pseudoterminal support, all values are accepted,
+ * but CSIZE is changed to CS8.
+ * Using z/OS UNIX Outboard Communications Server (OCS) support,
+ * the specified value is used.
+ * */
+std::string port::getCSIZE () { return port::controlFlags.csize; }
+int port::setCSIZE (std::string inStr) {
+	int result;
+	std::string lStr = ""; port::controlFlags.csize = lStr;
+	if (inStr.compare("CS5") == 0 || inStr.compare("cs5") == 0 ||
+		inStr.compare("Cs5") == 0 || inStr.compare("sS5") == 0) {
+		new_attr.c_cflag = new_attr.c_cflag | CS5;
+		result = 0; lStr = "CS5";
+	} else if (inStr.compare("CS6") == 0 || inStr.compare("cs6") == 0 ||
+			   inStr.compare("Cs6") == 0 || inStr.compare("sS6") == 0) {
+		new_attr.c_cflag = new_attr.c_cflag | CS6;
+		result = 0; lStr = "CS6";
+	} else if (inStr.compare("CS7") == 0 || inStr.compare("cs7") == 0 ||
+	           inStr.compare("Cs7") == 0 || inStr.compare("sS7") == 0) {
+		new_attr.c_cflag = new_attr.c_cflag | CS7;
+		result = 0; lStr = "CS7";
+	} else if (inStr.compare("CS8") == 0 || inStr.compare("cs8") == 0 ||
+	           inStr.compare("Cs8") == 0 || inStr.compare("sS8") == 0) {
+		new_attr.c_cflag = new_attr.c_cflag | CS8;
+		result = 0; lStr = "CS8";
+	} else {
+		result = -1;
+	}
+	result = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (result == -1) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.csize = lStr; }
+	return result;
+}
+/**
+ * !
+ * \brief function int port::setCSTOPB (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.CSTOPB.
+ * Sends two stop bits when necessary.
+ * If CSTOPB is 0, only one stop bit is used.
+ * Using z/OS UNIX pseudoterminal support, this bit is always 0.
+ * Using z/OS UNIX OCS support, the specified value is used.
+ * */
+bool port::getCSTOPB () { return port::controlFlags.cstopb; }
+int port::setCSTOPB (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CSTOPB)) : (new_attr.c_cflag & (CSTOPB));
+	                       //                0 |  1 = 1                      1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.cstopb = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setCREAD (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.CREAD.
+ * Enables reception.
+ * If this bit is set to 0, no input characters are received from the terminal.
+ * Using z/OS UNIX pseudoterminal support, this bit is always enabled and set to 1.
+ * */
+bool port::getCREAD () { return port::controlFlags.cread; }
+int port::setCREAD (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CREAD)) : (new_attr.c_cflag & (CREAD));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.cread = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setPARENB (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.PARENB.
+ * Enables parity generation and detection.
+ * A parity bit is added to each character on output, and expected from each character on input.
+ * If this bit is not set, no parity bit is added to output characters,
+ * and input characters are not checked for correct parity.
+ * <IBM> Under z/OS UNIX, if this bit is set to 1 in a request, it is ignored.
+ * It is always set to 0.
+ * <IBM> Using z/OS UNIX OCS support, the specified value is used.
+ * */
+bool port::getPARENB () { return port::controlFlags.parenb; }
+int port::setPARENB (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (PARENB)) : (new_attr.c_cflag & (PARENB));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.parenb = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setPARODD (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.PARODD.
+ * Indicates odd parity (when parity is enabled).
+ * If PARODD is 0, even parity is used (when parity is enabled).
+ * <IBM> Under z/OS UNIX, if this bit is set to 1 in a request, it is ignored.
+ * It is always set to 0.
+ * <IBM> Using z/OS UNIX OCS support, the specified value is used.
+ * */
+bool port::getPARODD () { return port::controlFlags.parodd; }
+int port::setPARODD (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (PARODD)) : (new_attr.c_cflag & (PARODD));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.parodd = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setHUPCL (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.HUPCL.
+ * Lowers the modem control lines for a port when
+ * the last process that has the port open closes
+ * the port (or the process ends).
+ * In other words, this tells the system to hang up
+ * when all relevant processes have finished using the port.
+ * For pseudoterminals HUPCL controls what happens when
+ * the slave pseudoterminals is closed. If HUPCL is set when
+ * the last file descriptor for the slave pseudoterminal is
+ * closed, then the slave pseudoterminal cannot be re-opened.
+ * The master terminal has to be closed and re-opened before
+ * the pair can be used again.
+ * */
+bool port::getHUPCL () { return port::controlFlags.hupcl; }
+int port::setHUPCL (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (HUPCL)) : (new_attr.c_cflag & (HUPCL));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.hupcl = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setCLOCAL (bool v)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.CLOCAL.
+ * Ignores modem status lines.
+ * A call to open() returns immediately without waiting
+ * for a modem connection to complete.
+ * If this bit is set to 0, modem status lines are monitored
+ * and open() waits for the modem connection.
+ * */
+bool port::getCLOCAL () { return port::controlFlags.clocal; }
+int port::setCLOCAL (bool v) {
+	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CLOCAL)) : (new_attr.c_cflag & (CLOCAL));
+	                       //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::controlFlags.clocal = (v) ? true : false; }
+	return (r < 0) ? -1 : 0;
 }
 
 serial_error* port::getError()       { return port::error; }
