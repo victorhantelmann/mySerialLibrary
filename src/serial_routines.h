@@ -127,19 +127,19 @@ class port {
     serial_error* getError ();
 
     // c_iflag flag constants for [ INPUT ] -> SET -> GET
-    int setIGNBRK (bool v);    bool getIGNBRK ();
-    int setBRKINT (bool v);    bool getBRKINT ();
-    int setIGNPAR (bool v);    bool getIGNPAR ();
-    int setPARMRK (bool v);    bool getPARMRK ();
-    int setINPCK  (bool v);    bool getINPCK  ();
-    int setISTRIP (bool v);    bool getISTRIP ();
-    int setINLCR  (bool v);    bool getINLCR  ();
-    int setIGNCR  (bool v);    bool getIGNCR  ();
-    int setICRNL  (bool v);    bool getICRNL  ();
-    int setIXON   (bool v);    bool getIXON   ();
-    int setIXOFF  (bool v);    bool getIXOFF  ();
-    int setIXANY  (bool v);    bool getIXANY  ();
-    int setIUTF8  (bool v);    bool getIUTF8  ();
+    int setIGNBRK (bool val);    bool getIGNBRK ();
+    int setBRKINT (bool val);    bool getBRKINT ();
+    int setIGNPAR (bool val);    bool getIGNPAR ();
+    int setPARMRK (bool val);    bool getPARMRK ();
+    int setINPCK  (bool val);    bool getINPCK  ();
+    int setISTRIP (bool val);    bool getISTRIP ();
+    int setINLCR  (bool val);    bool getINLCR  ();
+    int setIGNCR  (bool val);    bool getIGNCR  ();
+    int setICRNL  (bool val);    bool getICRNL  ();
+    int setIXON   (bool val);    bool getIXON   ();
+    int setIXOFF  (bool val);    bool getIXOFF  ();
+    int setIXANY  (bool val);    bool getIXANY  ();
+    int setIUTF8  (bool val);    bool getIUTF8  ();
     // c_iflag flag constants for [ INPUT ]
     class inFlags {
     public:
@@ -159,12 +159,12 @@ class port {
     }inFlags;
 
     // c_oflag flag constants for [ OUTPUT ] -> SET -> GET
-    int setOPOST  (bool v);    bool getOPOST  ();
-    int setONLCR  (bool v);    bool getONLCR  ();
-    int setOCRNL  (bool v);    bool getOCRNL  ();
-    int setONOCR  (bool v);    bool getONOCR  ();
-    int setONLRET (bool v);    bool getONLRET ();
-    int setOFILL  (bool v);    bool getOFILL  ();
+    int setOPOST  (bool val);    bool getOPOST  ();
+    int setONLCR  (bool val);    bool getONLCR  ();
+    int setOCRNL  (bool val);    bool getOCRNL  ();
+    int setONOCR  (bool val);    bool getONOCR  ();
+    int setONLRET (bool val);    bool getONLRET ();
+    int setOFILL  (bool val);    bool getOFILL  ();
     int setNLDLY  (std::string inStr);    std::string getNLDLY  ();
     int setCRDLY  (std::string inStr);    std::string getCRDLY  ();
     int setTABDLY (std::string inStr);    std::string getTABDLY ();
@@ -187,12 +187,12 @@ class port {
     }outFlags;
     // c_cflag flag constants for [ CONTROL ] -> SET -> GET
     int setCSIZE  (std::string inStr);    std::string getCSIZE  ();
-    int setCSTOPB (bool v);    bool getCSTOPB ();
-    int setCREAD  (bool v);    bool getCREAD  ();
-    int setPARENB (bool v);    bool getPARENB ();
-    int setPARODD (bool v);    bool getPARODD ();
-    int setHUPCL  (bool v);    bool getHUPCL  ();
-    int setCLOCAL (bool v);    bool getCLOCAL ();
+    int setCSTOPB (bool val);    bool getCSTOPB ();
+    int setCREAD  (bool val);    bool getCREAD  ();
+    int setPARENB (bool val);    bool getPARENB ();
+    int setPARODD (bool val);    bool getPARODD ();
+    int setHUPCL  (bool val);    bool getHUPCL  ();
+    int setCLOCAL (bool val);    bool getCLOCAL ();
     // c_cflag flag constants for [ CONTROL ]
     class controlFlags {
     public:
@@ -205,15 +205,15 @@ class port {
     	bool clocal;        // CLOCAL   = Ignore modem control lines
     } controlFlags;
     // c_lflag flag constants for [ LOCAL MODES ] -> SET -> GET
-    int setISIG   (bool v);    bool getISIG   ();
-    int setICANON (bool v);    bool getICANON ();
-    int setECHO   (bool v);    bool getECHO   ();
-    int setECHOE  (bool v);    bool getECHOE  ();
-    int setECHOK  (bool v);    bool getECHOK  ();
-    int setECHONL (bool v);    bool getECHONL ();
-    int setNOFLSH (bool v);    bool getNOFLSH ();
-    int setTOSTOP (bool v);    bool getTOSTOP ();
-    int setIEXTEN (bool v);    bool getIEXTEN ();
+    int setISIG   (bool val);    bool getISIG   ();
+    int setICANON (bool val);    bool getICANON ();
+    int setECHO   (bool val);    bool getECHO   ();
+    int setECHOE  (bool val);    bool getECHOE  ();
+    int setECHOK  (bool val);    bool getECHOK  ();
+    int setECHONL (bool val);    bool getECHONL ();
+    int setNOFLSH (bool val);    bool getNOFLSH ();
+    int setTOSTOP (bool val);    bool getTOSTOP ();
+    int setIEXTEN (bool val);    bool getIEXTEN ();
     // c_lflag flag constants for [ LOCAL MODES ]
     class localFlags {
     public:
@@ -228,16 +228,16 @@ class port {
     	bool iexten;        // IEXTEN   = Enable implementation-defined input processing. This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE to be interpreted, and for the IUCLC flag to be Actionive
     } localFlags;
     // c_cc array that defines [ SPECIAL CHARACTERS ] -> SET -> GET
-    int setVEOF   (bool v);    bool getVEOF   ();
-    int setVEOL   (bool v);    bool getVEOL   ();
-    int setVERASE (bool v);    bool getVERASE ();
-    int setVINTR  (bool v);    bool getVINTR  ();
-    int setVKILL  (bool v);    bool getVKILL  ();
-    int setVMIN   (bool v);    bool getVMIN   ();
-    int setVQUIT  (bool v);    bool getVQUIT  ();
-    int setVSTART (bool v);    bool getVSTART ();
-    int setVSTOP  (bool v);    bool getVSTOP  ();
-    int setVSUSP  (bool v);    bool getVSUSP  ();
+    int setVEOF   (bool val);    bool getVEOF   ();
+    int setVEOL   (bool val);    bool getVEOL   ();
+    int setVERASE (bool val);    bool getVERASE ();
+    int setVINTR  (bool val);    bool getVINTR  ();
+    int setVKILL  (bool val);    bool getVKILL  ();
+    int setVMIN   (bool val);    bool getVMIN   ();
+    int setVQUIT  (bool val);    bool getVQUIT  ();
+    int setVSTART (bool val);    bool getVSTART ();
+    int setVSTOP  (bool val);    bool getVSTOP  ();
+    int setVSUSP  (bool val);    bool getVSUSP  ();
     int setVTIME  (unsigned int val);    unsigned int getVTIME ();
     // c_cc array that defines [ SPECIAL CHARACTERS ]
     class specialCharFlags {
@@ -285,14 +285,14 @@ class port {
     //bool defecho;  // DEFECHO  = (not in POSIX) (Not implemented on Linux.) Echo only when a process is reading
     //bool flusho;   // FLUSHO   = (not in POSIX; not supported under Linux) Output is being flushed. This flag is toggled by typing the DISCARD character. [requires _BSD_SOURCE or _SVID_SOURCE]
     //bool pendin;   // PENDIN   = (not in POSIX; not supported under Linux) All characters in the input queue are reprinted when the next character is read
-    //bool vdiscard; // VDISCARD = (not in POSIX; not supported under Linux; 017, SI, Ctrl-O) Toggle: start/stop discarding pending output. Recognized when IEXTEN is set, and then not passed as input
-    //bool vdsusp;   // VDSUSP   = (not in POSIX; not supported under Linux; 031, EM, Ctrl-Y) Delayed suspend character (DSUSP): send SIGTSTP signal when the character is read by the user program. Recognized when IEXTEN and ISIG are set, and the system supports job control, and then not passed as input
-    //bool veol2;    // VEOL2    = (not in POSIX; 0, NUL) Yet another end-of-line character (EOL2). Recognized when ICANON is set
-    //bool vlnext;   // VLNEXT   = (not in POSIX; 026, SYN, Ctrl-V) Literal next (LNEXT). Quotes the next input character, depriving it of a possible special meaning. Recognized when IEXTEN is set, and then not passed as input
-    //bool vreprint; // VREPRINT = (not in POSIX; 022, DC2, Ctrl-R) Reprint unread characters (REPRINT). Recognized when ICANON and IEXTEN are set, and then not passed as input
-    //bool vstatus;  // VSTATUS  = (not in POSIX; not supported under Linux; status request: 024, DC4, Ctrl-T).  Status character (STATUS). Display status information at terminal, including state of foreground process and amount of CPU time it has consumed. Also sends a SIGINFO signal (not supported on Linux) to the foreground process group
-    //bool vstch;    // VSWTCH   = (not in POSIX; not supported under Linux; 0, NUL) Switch character (SWTCH). Used in System V to switch shells in shell layers, a predecessor to shell job control
-    //bool vwerase;  // VWERASE  = (not in POSIX; 027, ETB, Ctrl-W) Word erase (WERASE). Recognized when ICANON and IEXTEN are set, and then not passed as input
+    //bool valdiscard; // VDISCARD = (not in POSIX; not supported under Linux; 017, SI, Ctrl-O) Toggle: start/stop discarding pending output. Recognized when IEXTEN is set, and then not passed as input
+    //bool valdsusp;   // VDSUSP   = (not in POSIX; not supported under Linux; 031, EM, Ctrl-Y) Delayed suspend character (DSUSP): send SIGTSTP signal when the character is read by the user program. Recognized when IEXTEN and ISIG are set, and the system supports job control, and then not passed as input
+    //bool valeol2;    // VEOL2    = (not in POSIX; 0, NUL) Yet another end-of-line character (EOL2). Recognized when ICANON is set
+    //bool vallnext;   // VLNEXT   = (not in POSIX; 026, SYN, Ctrl-V) Literal next (LNEXT). Quotes the next input character, depriving it of a possible special meaning. Recognized when IEXTEN is set, and then not passed as input
+    //bool valreprint; // VREPRINT = (not in POSIX; 022, DC2, Ctrl-R) Reprint unread characters (REPRINT). Recognized when ICANON and IEXTEN are set, and then not passed as input
+    //bool valstatus;  // VSTATUS  = (not in POSIX; not supported under Linux; status request: 024, DC4, Ctrl-T).  Status character (STATUS). Display status information at terminal, including state of foreground process and amount of CPU time it has consumed. Also sends a SIGINFO signal (not supported on Linux) to the foreground process group
+    //bool valstch;    // VSWTCH   = (not in POSIX; not supported under Linux; 0, NUL) Switch character (SWTCH). Used in System V to switch shells in shell layers, a predecessor to shell job control
+    //bool valwerase;  // VWERASE  = (not in POSIX; 027, ETB, Ctrl-W) Word erase (WERASE). Recognized when ICANON and IEXTEN are set, and then not passed as input
     serial_error error[8];
 };
 port::port() {
@@ -603,7 +603,7 @@ int port::restoreSetup () {
 }
 /**
  * !
- * \brief function int port::setIGNBRK (bool v)
+ * \brief function int port::setIGNBRK (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -613,18 +613,18 @@ int port::restoreSetup () {
  * data transmission as a series of zero-value bits longer than a single byte.
  * */
 bool port::getIGNBRK () { return port::inFlags.ignbrk; }
-int port::setIGNBRK (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IGNBRK)) : (new_attr.c_iflag & (IGNBRK));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIGNBRK (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IGNBRK)) : (new_attr.c_iflag & (IGNBRK));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.ignbrk = (v) ? true : false; }
+	} else { port::inFlags.ignbrk = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setBRKINT (bool v)
+ * \brief function int port::setBRKINT (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -638,18 +638,18 @@ int port::setIGNBRK (bool v) {
  * or otherwise as a three-character sequence '\377', '\0', '\0'.
  * */
 bool port::getBRKINT () { return port::inFlags.brkint; }
-int port::setBRKINT (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (BRKINT)) : (new_attr.c_iflag & (BRKINT));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setBRKINT (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (BRKINT)) : (new_attr.c_iflag & (BRKINT));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.brkint = (v) ? true : false; }
+	} else { port::inFlags.brkint = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIGNPAR (bool v)
+ * \brief function int port::setIGNPAR (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -658,18 +658,18 @@ int port::setBRKINT (bool v) {
  * This is only useful if INPCK is also set.
  * */
 bool port::getIGNPAR () { return port::inFlags.ignpar; }
-int port::setIGNPAR (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IGNPAR)) : (new_attr.c_iflag & (IGNPAR));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIGNPAR (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IGNPAR)) : (new_attr.c_iflag & (IGNPAR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.ignpar = (v) ? true : false; }
+	} else { port::inFlags.ignpar = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setPARMRK (bool v)
+ * \brief function int port::setPARMRK (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -683,18 +683,18 @@ int port::setIGNPAR (bool v) {
  * So a valid byte 0377 is passed to the program as two bytes, 0377 0377, in this case.
  * */
 bool port::getPARMRK () { return port::inFlags.parmrk; }
-int port::setPARMRK (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (PARMRK)) : (new_attr.c_iflag & (PARMRK));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setPARMRK (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (PARMRK)) : (new_attr.c_iflag & (PARMRK));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.parmrk = (v) ? true : false; }
+	} else { port::inFlags.parmrk = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setINPCK (bool v)
+ * \brief function int port::setINPCK (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -704,18 +704,18 @@ int port::setPARMRK (bool v) {
  * the characters are simply passed through to the application.
  * */
 bool port::getINPCK () { return port::inFlags.inpck; }
-int port::setINPCK (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (INPCK)) : (new_attr.c_iflag & (INPCK));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setINPCK (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (INPCK)) : (new_attr.c_iflag & (INPCK));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.inpck = (v) ? true : false; }
+	} else { port::inFlags.inpck = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setISTRIP (bool v)
+ * \brief function int port::setISTRIP (bool val)
  * \param v as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -724,18 +724,18 @@ int port::setINPCK (bool v) {
  * Otherwise, all eight bits are available for programs to read.
  * */
 bool port::getISTRIP () { return port::inFlags.istrip; }
-int port::setISTRIP (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (ISTRIP)) : (new_attr.c_iflag & (ISTRIP));
-	                       //                0 |  1 = 1                      1 &  0 = 0
+int port::setISTRIP (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (ISTRIP)) : (new_attr.c_iflag & (ISTRIP));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.istrip = (v) ? true : false; }
+	} else { port::inFlags.istrip = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setINLCR (bool v)
+ * \brief function int port::setINLCR (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -744,18 +744,18 @@ int port::setISTRIP (bool v) {
  * to the application as carriage return characters ('\r').
  * */
 bool port::getINLCR () { return port::inFlags.inlcr; }
-int port::setINLCR (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (INLCR)) : (new_attr.c_iflag & (INLCR));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setINLCR (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (INLCR)) : (new_attr.c_iflag & (INLCR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.inlcr = (v) ? true : false; }
+	} else { port::inFlags.inlcr = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIGNCR (bool v)
+ * \brief function int port::setIGNCR (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -765,18 +765,18 @@ int port::setINLCR (bool v) {
  * return and linefeed when you type the RET key.
  * */
 bool port::getIGNCR () { return port::inFlags.igncr; }
-int port::setIGNCR (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IGNCR)) : (new_attr.c_iflag & (IGNCR));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIGNCR (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IGNCR)) : (new_attr.c_iflag & (IGNCR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.igncr = (v) ? true : false; }
+	} else { port::inFlags.igncr = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setICRNL (bool v)
+ * \brief function int port::setICRNL (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -785,18 +785,18 @@ int port::setIGNCR (bool v) {
  * received as input are passed to the application as newline characters ('\n').
  * */
 bool port::getICRNL () { return port::inFlags.icrnl; }
-int port::setICRNL (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (ICRNL)) : (new_attr.c_iflag & (ICRNL));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setICRNL (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (ICRNL)) : (new_attr.c_iflag & (ICRNL));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.icrnl = (v) ? true : false; }
+	} else { port::inFlags.icrnl = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIXON (bool v)
+ * \brief function int port::setIXON (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -808,18 +808,18 @@ int port::setICRNL (bool v) {
  * If this bit is not set, then START and STOP can be read as ordinary characters.
  * */
 bool port::getIXON () { return port::inFlags.ixon; }
-int port::setIXON (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IXON)) : (new_attr.c_iflag & (IXON));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIXON (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IXON)) : (new_attr.c_iflag & (IXON));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.ixon = (v) ? true : false; }
+	} else { port::inFlags.ixon = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIXOFF (bool v)
+ * \brief function int port::setIXOFF (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -832,18 +832,18 @@ int port::setIXON (bool v) {
  * and to a START character by resuming transmission.
  * */
 bool port::getIXOFF () { return port::inFlags.ixoff; }
-int port::setIXOFF (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IXOFF)) : (new_attr.c_iflag & (IXOFF));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIXOFF (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IXOFF)) : (new_attr.c_iflag & (IXOFF));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.ixoff = (v) ? true : false; }
+	} else { port::inFlags.ixoff = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIXANY (bool v)
+ * \brief function int port::setIXANY (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -853,19 +853,18 @@ int port::setIXOFF (bool v) {
  * Otherwise, only the START character restarts output.
  * */
 bool port::getIXANY () { return port::inFlags.ixany; }
-int port::setIXANY (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IXANY)) : (new_attr.c_iflag & (IXANY));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIXANY (bool val) {
+  	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IXANY)) : (new_attr.c_iflag & (IXANY));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.ixany = (v) ? true : false; }
+	} else { port::inFlags.ixany = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
-bool iutf8;         // IUTF8    =
 /**
  * !
- * \brief function int port::setIUTF8 (bool v)
+ * \brief function int port::setIUTF8 (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -874,18 +873,18 @@ bool iutf8;         // IUTF8    =
  * This allows character-erase to be correctly performed in cooked mode.
  * */
 bool port::getIUTF8 () { return port::inFlags.iutf8; }
-int port::setIUTF8 (bool v) {
-	new_attr.c_iflag = (v) ? (new_attr.c_iflag | (IUTF8)) : (new_attr.c_iflag & (IUTF8));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setIUTF8 (bool val) {
+	new_attr.c_iflag = (val) ? (new_attr.c_iflag | (IUTF8)) : (new_attr.c_iflag & (IUTF8));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::inFlags.iutf8 = (v) ? true : false; }
+	} else { port::inFlags.iutf8 = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setOPOST (bool v)
+ * \brief function int port::setOPOST (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -897,18 +896,18 @@ int port::setIUTF8 (bool v) {
  * If this bit isn't set, the characters are transmitted as-is.
  * */
 bool port::getOPOST () { return port::outFlags.opost; }
-int port::setOPOST (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OPOST)) : (new_attr.c_oflag & (OPOST));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setOPOST (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (OPOST)) : (new_attr.c_oflag & (OPOST));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.opost = (v) ? true : false; }
+	} else { port::outFlags.opost = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setONLCR (bool v)
+ * \brief function int port::setONLCR (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -917,18 +916,18 @@ int port::setOPOST (bool v) {
  * a pair of characters, carriage return followed by linefeed.
  * */
 bool port::getONLCR () { return port::outFlags.onlcr; }
-int port::setONLCR (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONLCR)) : (new_attr.c_oflag & (ONLCR));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setONLCR (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (ONLCR)) : (new_attr.c_oflag & (ONLCR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.onlcr = (v) ? true : false; }
+	} else { port::outFlags.onlcr = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setOCRNL (bool v)
+ * \brief function int port::setOCRNL (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -936,18 +935,18 @@ int port::setONLCR (bool v) {
  * If this bit is set, convert the carriage return to linefeed.
  * */
 bool port::getOCRNL () { return port::outFlags.ocrnl; }
-int port::setOCRNL (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OCRNL)) : (new_attr.c_oflag & (OCRNL));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setOCRNL (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (OCRNL)) : (new_attr.c_oflag & (OCRNL));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.ocrnl = (v) ? true : false; }
+	} else { port::outFlags.ocrnl = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setONOCR (bool v)
+ * \brief function int port::setONOCR (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -955,18 +954,18 @@ int port::setOCRNL (bool v) {
  * If this bit is set, don't output carriage return at column 0.
  * */
 bool port::getONOCR () { return port::outFlags.onocr; }
-int port::setONOCR (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONOCR)) : (new_attr.c_oflag & (ONOCR));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setONOCR (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (ONOCR)) : (new_attr.c_oflag & (ONOCR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.onocr = (v) ? true : false; }
+	} else { port::outFlags.onocr = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setONLRET (bool v)
+ * \brief function int port::setONLRET (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -974,18 +973,18 @@ int port::setONOCR (bool v) {
  * If this bit is set, don't output carriage return at all.
  * */
 bool port::getONLRET () { return port::outFlags.onlret; }
-int port::setONLRET (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (ONLRET)) : (new_attr.c_oflag & (ONLRET));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setONLRET (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (ONLRET)) : (new_attr.c_oflag & (ONLRET));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.onlret = (v) ? true : false; }
+	} else { port::outFlags.onlret = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setOFILL (bool v)
+ * \brief function int port::setOFILL (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -993,13 +992,13 @@ int port::setONLRET (bool v) {
  * If this bit is set, send fill characters for a delay, rather than using a timed delay.
  * */
 bool port::getOFILL () { return port::outFlags.ofill; }
-int port::setOFILL (bool v) {
-	new_attr.c_oflag = (v) ? (new_attr.c_oflag | (OFILL)) : (new_attr.c_oflag & (OFILL));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setOFILL (bool val) {
+	new_attr.c_oflag = (val) ? (new_attr.c_oflag | (OFILL)) : (new_attr.c_oflag & (OFILL));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::outFlags.ofill = (v) ? true : false; }
+	} else { port::outFlags.ofill = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
@@ -1231,7 +1230,7 @@ int port::setCSIZE (std::string inStr) {
 }
 /**
  * !
- * \brief function int port::setCSTOPB (bool v)
+ * \brief function int port::setCSTOPB (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1242,18 +1241,18 @@ int port::setCSIZE (std::string inStr) {
  * Using z/OS UNIX OCS support, the specified value is used.
  * */
 bool port::getCSTOPB () { return port::controlFlags.cstopb; }
-int port::setCSTOPB (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CSTOPB)) : (new_attr.c_cflag & (CSTOPB));
-	                       //                0 |  1 = 1                      1 &  0 = 0
+int port::setCSTOPB (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (CSTOPB)) : (new_attr.c_cflag & (CSTOPB));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.cstopb = (v) ? true : false; }
+	} else { port::controlFlags.cstopb = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setCREAD (bool v)
+ * \brief function int port::setCREAD (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1263,18 +1262,18 @@ int port::setCSTOPB (bool v) {
  * Using z/OS UNIX pseudoterminal support, this bit is always enabled and set to 1.
  * */
 bool port::getCREAD () { return port::controlFlags.cread; }
-int port::setCREAD (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CREAD)) : (new_attr.c_cflag & (CREAD));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setCREAD (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (CREAD)) : (new_attr.c_cflag & (CREAD));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.cread = (v) ? true : false; }
+	} else { port::controlFlags.cread = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setPARENB (bool v)
+ * \brief function int port::setPARENB (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1288,18 +1287,18 @@ int port::setCREAD (bool v) {
  * <IBM> Using z/OS UNIX OCS support, the specified value is used.
  * */
 bool port::getPARENB () { return port::controlFlags.parenb; }
-int port::setPARENB (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (PARENB)) : (new_attr.c_cflag & (PARENB));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setPARENB (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (PARENB)) : (new_attr.c_cflag & (PARENB));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.parenb = (v) ? true : false; }
+	} else { port::controlFlags.parenb = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setPARODD (bool v)
+ * \brief function int port::setPARODD (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1311,18 +1310,18 @@ int port::setPARENB (bool v) {
  * <IBM> Using z/OS UNIX OCS support, the specified value is used.
  * */
 bool port::getPARODD () { return port::controlFlags.parodd; }
-int port::setPARODD (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (PARODD)) : (new_attr.c_cflag & (PARODD));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setPARODD (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (PARODD)) : (new_attr.c_cflag & (PARODD));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.parodd = (v) ? true : false; }
+	} else { port::controlFlags.parodd = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setHUPCL (bool v)
+ * \brief function int port::setHUPCL (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1340,18 +1339,18 @@ int port::setPARODD (bool v) {
  * the pair can be used again.
  * */
 bool port::getHUPCL () { return port::controlFlags.hupcl; }
-int port::setHUPCL (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (HUPCL)) : (new_attr.c_cflag & (HUPCL));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setHUPCL (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (HUPCL)) : (new_attr.c_cflag & (HUPCL));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.hupcl = (v) ? true : false; }
+	} else { port::controlFlags.hupcl = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setCLOCAL (bool v)
+ * \brief function int port::setCLOCAL (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1363,18 +1362,18 @@ int port::setHUPCL (bool v) {
  * and open() waits for the modem connection.
  * */
 bool port::getCLOCAL () { return port::controlFlags.clocal; }
-int port::setCLOCAL (bool v) {
-	new_attr.c_cflag = (v) ? (new_attr.c_cflag | (CLOCAL)) : (new_attr.c_cflag & (CLOCAL));
-	                       //                0 |  1 = 1                     1 &  0 = 0
+int port::setCLOCAL (bool val) {
+	new_attr.c_cflag = (val) ? (new_attr.c_cflag | (CLOCAL)) : (new_attr.c_cflag & (CLOCAL));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::controlFlags.clocal = (v) ? true : false; }
+	} else { port::controlFlags.clocal = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setISIG (bool v)
+ * \brief function int port::setISIG (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1389,18 +1388,18 @@ int port::setCLOCAL (bool v) {
  * control characters are entered.
  * */
 bool port::getISIG () { return port::localFlags.isig; }
-int port::setISIG (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ISIG)) : (new_attr.c_lflag & (ISIG));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setISIG (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ISIG)) : (new_attr.c_lflag & (ISIG));
+	                         //                0 |  1 = 1                    1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.isig = (v) ? true : false; }
+	} else { port::localFlags.isig = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setICANON (bool v)
+ * \brief function int port::setICANON (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1423,18 +1422,18 @@ int port::setISIG (bool v) {
  * See also the descriptions of MIN and TIME in the c_cc member.
  * */
 bool port::getICANON () { return port::localFlags.icanon; }
-int port::setICANON (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ICANON)) : (new_attr.c_lflag & (ICANON));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setICANON (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ICANON)) : (new_attr.c_lflag & (ICANON));
+	                         //                0 |  1 = 1                    1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.icanon = (v) ? true : false; }
+	} else { port::localFlags.icanon = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setECHO (bool v)
+ * \brief function int port::setECHO (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1443,18 +1442,18 @@ int port::setICANON (bool v) {
  * If this is bit is 0, input characters are not echoed.
  * */
 bool port::getECHO () { return port::localFlags.echo; }
-int port::setECHO (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHO)) : (new_attr.c_lflag & (ECHO));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setECHO (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ECHO)) : (new_attr.c_lflag & (ECHO));
+	                         //                0 |  1 = 1                    1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.echo = (v) ? true : false; }
+	} else { port::localFlags.echo = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setECHOE (bool v)
+ * \brief function int port::setECHOE (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1467,18 +1466,18 @@ int port::setECHO (bool v) {
  * ECHOE has an effect only if the ICANON bit is 1.
  * */
 bool port::getECHOE () { return port::localFlags.echoe; }
-int port::setECHOE (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHOE)) : (new_attr.c_lflag & (ECHOE));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setECHOE (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ECHOE)) : (new_attr.c_lflag & (ECHOE));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.echoe = (v) ? true : false; }
+	} else { port::localFlags.echoe = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setECHOK (bool v)
+ * \brief function int port::setECHOK (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1488,18 +1487,18 @@ int port::setECHOE (bool v) {
  * ECHOK has an effect only if the ICANON bit is set to 1.
  * */
 bool port::getECHOK () { return port::localFlags.echok; }
-int port::setECHOK (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHOK)) : (new_attr.c_lflag & (ECHOK));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setECHOK (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ECHOK)) : (new_attr.c_lflag & (ECHOK));
+	                         //                0 |  1 = 1                     1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.echok = (v) ? true : false; }
+	} else { port::localFlags.echok = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setECHOK (bool v)
+ * \brief function int port::setECHOK (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1508,18 +1507,18 @@ int port::setECHOK (bool v) {
  * ECHONL has an effect only if the ICANON bit is set to 1.
  * */
 bool port::getECHONL () { return port::localFlags.echonl; }
-int port::setECHONL (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (ECHONL)) : (new_attr.c_lflag & (ECHONL));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setECHONL (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (ECHONL)) : (new_attr.c_lflag & (ECHONL));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.echonl = (v) ? true : false; }
+	} else { port::localFlags.echonl = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setNOFLSH (bool v)
+ * \brief function int port::setNOFLSH (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1529,18 +1528,18 @@ int port::setECHONL (bool v) {
  * If NOFLSH is set to 0, the queues are flushed if one of the special characters is found.
  * */
 bool port::getNOFLSH () { return port::localFlags.noflsh; }
-int port::setNOFLSH (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (NOFLSH)) : (new_attr.c_lflag & (NOFLSH));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setNOFLSH (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (NOFLSH)) : (new_attr.c_lflag & (NOFLSH));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.noflsh = (v) ? true : false; }
+	} else { port::localFlags.noflsh = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setTOSTOP (bool v)
+ * \brief function int port::setTOSTOP (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1553,18 +1552,18 @@ int port::setNOFLSH (bool v) {
  * stream, and no signal is raised.
  * */
 bool port::getTOSTOP () { return port::localFlags.tostop; }
-int port::setTOSTOP (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (TOSTOP)) : (new_attr.c_lflag & (TOSTOP));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setTOSTOP (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (TOSTOP)) : (new_attr.c_lflag & (TOSTOP));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.tostop = (v) ? true : false; }
+	} else { port::localFlags.tostop = (val) ? true : false; }
 	return (r < 0) ? -1 : 0;
 }
 /**
  * !
- * \brief function int port::setIEXTEN (bool v)
+ * \brief function int port::setIEXTEN (bool val)
  * \param value as bool
  * \returns int, 0 if OK, -1 if ERROR
  * \details
@@ -1576,13 +1575,274 @@ int port::setTOSTOP (bool v) {
  * "special character" processing and the backslash is discarded.
  * */
 bool port::getIEXTEN () { return port::localFlags.iexten; }
-int port::setIEXTEN (bool v) {
-	new_attr.c_lflag = (v) ? (new_attr.c_lflag | (IEXTEN)) : (new_attr.c_lflag & (IEXTEN));
-	                       //                0 |  1 = 1                    1 &  0 = 0
+int port::setIEXTEN (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (IEXTEN)) : (new_attr.c_lflag & (IEXTEN));
+	                         //                0 |  1 = 1                      1 &  0 = 0
 	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
 	if (r < 0) {
 		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
-	} else { port::localFlags.iexten = (v) ? true : false; }
+	} else { port::localFlags.iexten = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVEOF (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VEOF.
+ * Gives the End Of File character EOF. 'CTRL-D'
+ * It is recognized only in canonical (line) mode.
+ * When this is found in input, all bytes waiting to be read are immediately passed
+ * to the application without waiting for the end of the line.
+ * The EOF character itself is discarded.
+ * If EOF occurs at the beginning of a line, the read function that tries to read
+ * that line receives an End Of File (EOF) indication.
+ * Note that EOF results in End Of File only if it is at the beginning of a line !!!
+ * If it is preceded by one or more characters, it indicates only End Of Line (EOL).
+ * */
+bool port::getVEOF () { return port::specialCharFlags.veof; }
+int port::setVEOF (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VEOF)) : (new_attr.c_lflag & (VEOF));
+	                         //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.veof = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVEOL (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VEOL.
+ * Indexes the EOL special character (Ctrl-@ or ASCII NULL), which is recognized on input
+ * if the ICANON flag is set.
+ * EOL is an additional line delimiter, like NL, and is not normally used.
+ * */
+bool port::getVEOL () { return port::specialCharFlags.veol; }
+int port::setVEOL (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VEOL)) : (new_attr.c_lflag & (VEOL));
+	                         //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.veol = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVERASE (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VERASE.
+ * Indexes the ERASE special character (Backspace), which is recognized on input
+ * if the ICANON flag is set.
+ * The ERASE character does not erase beyond the beginning of the line as delimited
+ * by a NL, EOL, EOF, or EOL2 character.
+ * If the ICANON flag is set, the ERASE character is discarded when processed.
+ * */
+bool port::getVERASE () { return port::specialCharFlags.verase; }
+int port::setVERASE (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VERASE)) : (new_attr.c_lflag & (VERASE));
+	                         //                0 |  1 = 1                      1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.verase = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVINTR (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VINTR.
+ * Indexes the INTR special character (Ctrl-c), which is recognized on input
+ * if the ISIG flag is set.
+ * The INTR character generates a SIGINT signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling
+ * terminal.
+ * If the ISIG flag is set, the INTR character is discarded when processed.
+ * */
+bool port::getVINTR () { return port::specialCharFlags.vintr; }
+int port::setVINTR (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VINTR)) : (new_attr.c_lflag & (VINTR));
+	                         //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vintr = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVKILL (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VKILL.
+ * Indexes the KILL special character (Ctrl-u), which is recognized on input
+ * if the ICANON flag is set.
+ * The KILL character deletes the entire line, as delimited by a NL, EOL, EOF,
+ * or EOL2 character.
+ * If the ICANON flag is set, the KILL character is discarded when processed.
+ * */
+bool port::getVKILL () { return port::specialCharFlags.vkill; }
+int port::setVKILL (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VKILL)) : (new_attr.c_lflag & (VKILL));
+	                         //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vintr = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVMIN (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VMIN.
+ * Indexes the MIN value, which is not a special character.
+ * The use of the MIN value is described in the discussion of noncanonical mode
+ * input processing in:
+ * "ldterm Line Discipline"
+ * in:
+ * General Programming Concepts: Writing and Debugging Programs.
+ * */
+bool port::getVMIN () { return port::specialCharFlags.vmin; }
+int port::setVMIN (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VMIN)) : (new_attr.c_lflag & (VMIN));
+	                         //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vmin = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVQUIT (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VQUIT.
+ * Indexes the QUIT special character (Ctrl-\), which is recognized on input
+ * if the ISIG flag is set.
+ * The QUIT character generates a SIGQUIT signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling
+ * terminal, and writes a core image file into the current working directory.
+ * If the ISIG flag is set, the QUIT character is discarded when processed.
+ * */
+bool port::getVQUIT () { return port::specialCharFlags.vquit; }
+int port::setVQUIT (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VQUIT)) : (new_attr.c_lflag & (VQUIT));
+	                         //                0 |  1 = 1                     1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vquit = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVSTART (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VSTART.
+ * Indexes the START special character (Ctrl-q), which is recognized:
+ * on input if the IXON flag is set
+ * and generated on output if the IXOFF flag is set.
+ * The START character can be used to resume output that has been suspended
+ * by a STOP character.
+ * If the IXON flag is set, the START character is discarded when processed.
+ * While output is not suspended, START characters are ignored and not read.
+ * <IBM> VSTRT is an alias for VSTART.
+ * */
+bool port::getVSTART () { return port::specialCharFlags.vstart; }
+int port::setVSTART (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VSTART)) : (new_attr.c_lflag & (VSTART));
+	                         //                0 |  1 = 1                      1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vstart = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVSTOP (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VSTOP.
+ * Indexes the STOP special character (Ctrl-s), which is recognized:
+ * on input if the IXON flag is set
+ * and generated on output if the IXOFF flag is set.
+ * The STOP character can be used to with terminals to prevent output
+ * from disappearing before it can be read.
+ * If the IXON flag is set, the STOP character is discarded when processed.
+ * While output is suspended, STOP characters are ignored and not read.
+ * */
+bool port::getVSTOP () { return port::specialCharFlags.vstop; }
+int port::setVSTOP (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VSTOP)) : (new_attr.c_lflag & (VSTOP));
+	                         //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vstop = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVSUSP (bool val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VSUSP.
+ * Indexes the SUSP special character (Ctrl-z), which is recognized on input
+ * if the ISIG flag is set.
+ * The SUSP character generates a SIGTSTP signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling terminal.
+ * If the ISIG flag is set, the SUSP character is discarded when processed.
+ * */
+bool port::getVSUSP () { return port::specialCharFlags.vsusp; }
+int port::setVSUSP (bool val) {
+	new_attr.c_lflag = (val) ? (new_attr.c_lflag | (VSUSP)) : (new_attr.c_lflag & (VSUSP));
+	                         //                0 |  1 = 1                    1 &  0 = 0
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vsusp = (val) ? true : false; }
+	return (r < 0) ? -1 : 0;
+}
+/**
+ * !
+ * \brief function int port::setVTIME (unsigned int val)
+ * \param value as bool
+ * \returns int, 0 if OK, -1 if ERROR
+ * \details
+ * Action: changes termios.VTIME.
+ * Indexes the TIME value, which is not a special character.
+ * The use of the TIME value is described in the discussion of noncanonical mode
+ * input processing in "ldterm Line Discipline" in General Programming Concepts:
+ * Writing and Debugging Programs.
+ * */
+unsigned int port::getVTIME () { return port::specialCharFlags.vtime; }
+int port::setVTIME (unsigned int val) {
+	new_attr.c_lflag = (val > 0) ? (new_attr.c_lflag | (VTIME)) : 0;
+	int r = tcsetattr (port::fstream, TCSANOW, &new_attr);
+	if (r < 0) {
+		std::cerr << __FUNCTION__<< " tcsetattr " + ERROR + NOT_SUCCEDED << std::endl;
+	} else { port::specialCharFlags.vtime = (val > 0) ? val : 0; }
 	return (r < 0) ? -1 : 0;
 }
 
