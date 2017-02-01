@@ -122,6 +122,7 @@ class port {
     bool doOpen ();
     bool doClose ();
     int saveSetup ();
+    int applyNewSetup ();
     int restoreSetup ();
 
     serial_error* getError ();
@@ -408,21 +409,37 @@ void port::setBaud (unsigned int iBaud) {
         if (baud_found) {
             port::error[1] = ok;
         } else {
+            port::baud = 0;            port::str_baud = "B0";
             port::error[1] = err_baud_rate;
-            port::baud = 0;
-            port::str_baud = "B0";
         }
     } else {
         port::error[1] = err_baud_rate_not_set;
-        port::baud = 0;
-        port::str_baud = "B0";
+        port::baud = 0;        port::str_baud = "B0";
     }
     if (port::error[1].what().compare(NO_ERROR) == 0) {
         port::baud = iBaud;
         port::str_baud = "B" + to_string(iBaud);
+        if (tcgetattr(port::fstream, &new_attr) != 0) {
+        	// termios [READ baud rate] error occured
+        	// TODO !!! debatable if needed here in the end !!! cumulation in saveSetup ()
+            port::baud = 0;            port::str_baud = "B0";
+        	port::error[5] = err_can_t_read_termios_attribute;
+        } else if (cfsetispeed(&new_attr, baud) != 0) { // termios [SET INPUT baud] error occured
+            port::baud = 0;            port::str_baud = "B0";
+        	port::error[5] = err_can_t_set_termios_baud;
+        } else if (cfsetospeed(&new_attr, baud) != 0) { // termios [SET OUTPUT baud] error occured
+            port::baud = 0;            port::str_baud = "B0";
+        	port::error[5] = err_can_t_set_termios_baud;
+        } else if (tcsetattr(1, TCSANOW, &new_attr) != 0){
+        	// termios [PASS structure] error occured
+        	// TODO !!! debatable if needed here in the end !!! cumulation in applyNewSetup ()
+            port::baud = 0;            port::str_baud = "B0";
+        	port::error[5] = err_can_t_pass_termios_struct;
+        } else { // termios [no error]
+        	port::error[5] = ok;
+        }
     } else {
-        port::baud = 0;
-        port::str_baud = "B0";
+        port::baud = 0;        port::str_baud = "B0";
     }
 }
 
@@ -589,12 +606,18 @@ bool port::doClose () {
 int port::saveSetup () {
 	int result = tcgetattr (port::fstream, &orig_attr);
 	if (result < 0) {
+		port::error[5] = err_can_t_read_termios_attribute;
 		result = -1;
 	} else {
 		new_attr = orig_attr;
+		port::error[5] = ok;
 		result = 0;
 	}
 	return result;
+}
+int port::applyNewSetup () {
+	// TODO
+	return 0;
 }
 int port::restoreSetup () {
 	int result = tcsetattr (port::fstream, TCSANOW, &orig_attr);
