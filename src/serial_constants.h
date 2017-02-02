@@ -37,6 +37,12 @@ const std::string NOT_AVAILABLE = "[not AVAILABLE] ";
 const std::string OSX           = "OSX ";
 const std::string WIN           = "WIN ";
 const std::string MAC           = "MAC ";
+const std::string NLDLY_        = "[par. NLDLY] ";
+const std::string CRDLY_        = "[par. CRDLY] ";
+const std::string TABDLY_       = "[par. TABDLY] ";
+const std::string VTDLY_        = "[par. VTDLY] ";
+const std::string FFDLY_        = "[par. FFDLY] ";
+const std::string CSIZE_        = "[par. CSIZE] ";
 
 const std::string TERMIOS = "termios ";
 const std::string ATTRIB  = "attribute ";
@@ -69,6 +75,12 @@ const std::string ERR_STOP_BITS_NOT_SET            = ERROR + STOP_BITS + NOT_SET
 const std::string ERR_STOP_BITS_EMPTY_STRING       = ERROR + STOP_BITS + STRING + IS + EMPTY;
 const std::string ERR_CAN_T_READ_TERMIOS_ATTRIBUTE = ERROR + CAN_T + READ + TERMIOS + ATTRIB;
 const std::string ERR_CAN_T_SET_TERMIOS_BAUD       = ERROR + CAN_T + SET + TERMIOS + BAUD;
+const std::string ERR_CAN_T_SET_TERMIOS_NLDLY      = ERROR + CAN_T + SET + TERMIOS + NLDLY_;
+const std::string ERR_CAN_T_SET_TERMIOS_CRDLY      = ERROR + CAN_T + SET + TERMIOS + CRDLY_;
+const std::string ERR_CAN_T_SET_TERMIOS_TABDLY     = ERROR + CAN_T + SET + TERMIOS + TABDLY_;
+const std::string ERR_CAN_T_SET_TERMIOS_VTDLY      = ERROR + CAN_T + SET + TERMIOS + VTDLY_;
+const std::string ERR_CAN_T_SET_TERMIOS_FFDLY      = ERROR + CAN_T + SET + TERMIOS + FFDLY_;
+const std::string ERR_CAN_T_SET_TERMIOS_CSIZE      = ERROR + CAN_T + SET + TERMIOS + CSIZE_;
 const std::string ERR_CAN_T_PASS_TERMIOS_STRUCT    = ERROR + CAN_T + PASS + TERMIOS + STRUCT;
 
 #endif /* SERIAL_CONSTANTS_H_ */
