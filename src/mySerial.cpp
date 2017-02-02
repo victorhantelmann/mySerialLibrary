@@ -3,7 +3,6 @@
 #include "serial_routines.h"
 #include "serial_errors.h"
 
-
 void listStatus(port ip, std::string inStr) {
 	  std::cout << "++++++++++" << inStr << "++++++++++" << std::endl <<
 			"  NAME p.error[0]   {" << ip.getError()[0].what()  << "}  BAUD   p.error[1]{"  << ip.getError()[1].what() << "}" << std::endl <<
