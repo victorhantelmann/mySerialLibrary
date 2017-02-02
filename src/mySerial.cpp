@@ -3,6 +3,17 @@
 #include "serial_routines.h"
 #include "serial_errors.h"
 
+void listStatus(port ip, std::string inStr) {
+	  std::cout << "++++++++++" << inStr << "++++++++++" << std::endl <<
+			"  NAME p.error[0]   {" << ip.getError()[0].what()  << "}  BAUD   p.error[1]{"  << ip.getError()[1].what() << "}" << std::endl <<
+			"  DATA p.error[2]   {" << ip.getError()[2].what()  << "}  PARITY p.error[3]{"  << ip.getError()[3].what() << "}" << std::endl <<
+			"  STOP p.error[4]   {" << ip.getError()[4].what()  << std::endl <<
+			"  TERMIOS p.error[5]{" << ip.getError()[5].what()  << std::endl <<
+			"  NLDLY p.error[6]  {" << ip.getError()[6].what()  << "}  CRDLY p.error[7] {"  << ip.getError()[7].what() << "}" << std::endl <<
+			"  TABDLY p.error[8] {" << ip.getError()[8].what()  << "}  VTDLY p.error[9] {"  << ip.getError()[9].what() << "}" << std::endl <<
+			"  FFDLY p.error[10] {" << ip.getError()[10].what() << "}  CSIZE p.error[11]{" << ip.getError()[11].what() << "}" << std::endl;
+}
+
 int main(int argc, char **argv) {
   port p;
   std::cout << "++++++++++ NAME ++++++++++" << std::endl;
@@ -34,5 +45,13 @@ int main(int argc, char **argv) {
 
   std::cout << "+++++++ END STATUS +++++++" << std::endl;
   p.show_all_options();
+  p.doOpen();
+  p.saveConfig();
+  listStatus(p, "  after saveConfig()   ");
+  p.applyConfig();
+  listStatus(p, "  after applyConfig()  ");
+  p.restoreConfig();
+  listStatus(p, " after restoreConfig() ");
+  p.doClose();
   return 0;
 }
