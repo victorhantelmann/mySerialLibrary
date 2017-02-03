@@ -1,0 +1,134 @@
+\hypertarget{classport_1_1outFlags}{}\section{port\+:\+:out\+Flags Class Reference}
+\label{classport_1_1outFlags}\index{port\+::out\+Flags@{port\+::out\+Flags}}
+
+
+Class containing the statuses of termios.\+c\+\_\+oflag, constants for \mbox{[} O\+U\+T\+P\+UT \mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$serial\+\_\+routines.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classport_1_1outFlags_a11cd5d176cbfcee504f49db3ed8a1f44}{opost}
+\begin{DoxyCompactList}\small\item\em bool opost = Enable implementation-\/defined output processing. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1outFlags_a57f996933d316ad79637030e2cb06898}{onlcr}
+\begin{DoxyCompactList}\small\item\em bool onlcr = (X\+SI) Map NL to C\+R-\/\+NL on output. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1outFlags_a70a63948b2b1f2d1a33c14861938105d}{ocrnl}
+\begin{DoxyCompactList}\small\item\em bool ocrnl = Map CR to NL on output. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1outFlags_abd2808b0c96c90d378a567de95416db8}{onocr}
+\begin{DoxyCompactList}\small\item\em bool onocr = Don\textquotesingle{}t output CR at column 0. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1outFlags_a0aa44f8e847dc5d6392973e255946079}{onlret}
+\begin{DoxyCompactList}\small\item\em bool onlret = Don\textquotesingle{}t output CR. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1outFlags_af0ae89ef0e6a68c95cf3bcabc84019f5}{ofill}
+\begin{DoxyCompactList}\small\item\em bool ofill = Send fill characters for a delay, rather than using a timed delay. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classport_1_1outFlags_a719b452f6a266623254a5e0ad68f38af}{nldly}
+\begin{DoxyCompactList}\small\item\em std\+::string nldly = Newline delay mask. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classport_1_1outFlags_ac7a49c39de79d430c46ae93259e9ff39}{crdly}
+\begin{DoxyCompactList}\small\item\em std\+::string crdly = Carriage return delay mask. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classport_1_1outFlags_a9d52874c0c75ede86cb806a0058dbff3}{tabdly}
+\begin{DoxyCompactList}\small\item\em std\+::string tabdly = Horizontal tab delay mask. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classport_1_1outFlags_adb8648cf7a33c834075f94396029ef93}{vtdly}
+\begin{DoxyCompactList}\small\item\em std\+::string vtdly = Vertical tab delay mask. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{classport_1_1outFlags_a725b1f54764d756dab67994a00214c67}{ffdly}
+\begin{DoxyCompactList}\small\item\em std\+::string ffdly = Form feed delay mask. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class containing the statuses of termios.\+c\+\_\+oflag, constants for \mbox{[} O\+U\+T\+P\+UT \mbox{]}. 
+
+\subsection{Member Data Documentation}
+\index{port\+::out\+Flags@{port\+::out\+Flags}!crdly@{crdly}}
+\index{crdly@{crdly}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{crdly}{crdly}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::out\+Flags\+::crdly}\hypertarget{classport_1_1outFlags_ac7a49c39de79d430c46ae93259e9ff39}{}\label{classport_1_1outFlags_ac7a49c39de79d430c46ae93259e9ff39}
+
+
+std\+::string crdly = Carriage return delay mask. 
+
+Values are C\+R0, C\+R1, C\+R2, or C\+R3. \mbox{[}requires \+\_\+\+B\+S\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+S\+V\+I\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+X\+O\+P\+E\+N\+\_\+\+S\+O\+U\+R\+CE\mbox{]} 
+
+c\+\_\+oflag.\+C\+R\+D\+LY\index{port\+::out\+Flags@{port\+::out\+Flags}!ffdly@{ffdly}}
+\index{ffdly@{ffdly}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{ffdly}{ffdly}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::out\+Flags\+::ffdly}\hypertarget{classport_1_1outFlags_a725b1f54764d756dab67994a00214c67}{}\label{classport_1_1outFlags_a725b1f54764d756dab67994a00214c67}
+
+
+std\+::string ffdly = Form feed delay mask. 
+
+Values are F\+F0 or F\+F1. \mbox{[}requires \+\_\+\+B\+S\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+S\+V\+I\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+X\+O\+P\+E\+N\+\_\+\+S\+O\+U\+R\+CE\mbox{]} 
+
+c\+\_\+oflag.\+F\+F\+D\+LY\index{port\+::out\+Flags@{port\+::out\+Flags}!nldly@{nldly}}
+\index{nldly@{nldly}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{nldly}{nldly}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::out\+Flags\+::nldly}\hypertarget{classport_1_1outFlags_a719b452f6a266623254a5e0ad68f38af}{}\label{classport_1_1outFlags_a719b452f6a266623254a5e0ad68f38af}
+
+
+std\+::string nldly = Newline delay mask. 
+
+Values are N\+L0 and N\+L1. \mbox{[}requires \+\_\+\+B\+S\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+S\+V\+I\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+X\+O\+P\+E\+N\+\_\+\+S\+O\+U\+R\+CE\mbox{]} 
+
+c\+\_\+oflag.\+N\+L\+D\+LY\index{port\+::out\+Flags@{port\+::out\+Flags}!ocrnl@{ocrnl}}
+\index{ocrnl@{ocrnl}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{ocrnl}{ocrnl}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::ocrnl}\hypertarget{classport_1_1outFlags_a70a63948b2b1f2d1a33c14861938105d}{}\label{classport_1_1outFlags_a70a63948b2b1f2d1a33c14861938105d}
+
+
+bool ocrnl = Map CR to NL on output. 
+
+c\+\_\+oflag.\+O\+C\+R\+NL\index{port\+::out\+Flags@{port\+::out\+Flags}!ofill@{ofill}}
+\index{ofill@{ofill}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{ofill}{ofill}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::ofill}\hypertarget{classport_1_1outFlags_af0ae89ef0e6a68c95cf3bcabc84019f5}{}\label{classport_1_1outFlags_af0ae89ef0e6a68c95cf3bcabc84019f5}
+
+
+bool ofill = Send fill characters for a delay, rather than using a timed delay. 
+
+c\+\_\+oflag.\+O\+F\+I\+LL\index{port\+::out\+Flags@{port\+::out\+Flags}!onlcr@{onlcr}}
+\index{onlcr@{onlcr}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{onlcr}{onlcr}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::onlcr}\hypertarget{classport_1_1outFlags_a57f996933d316ad79637030e2cb06898}{}\label{classport_1_1outFlags_a57f996933d316ad79637030e2cb06898}
+
+
+bool onlcr = (X\+SI) Map NL to C\+R-\/\+NL on output. 
+
+c\+\_\+oflag.\+O\+N\+L\+CR\index{port\+::out\+Flags@{port\+::out\+Flags}!onlret@{onlret}}
+\index{onlret@{onlret}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{onlret}{onlret}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::onlret}\hypertarget{classport_1_1outFlags_a0aa44f8e847dc5d6392973e255946079}{}\label{classport_1_1outFlags_a0aa44f8e847dc5d6392973e255946079}
+
+
+bool onlret = Don\textquotesingle{}t output CR. 
+
+c\+\_\+oflag.\+O\+N\+L\+R\+ET\index{port\+::out\+Flags@{port\+::out\+Flags}!onocr@{onocr}}
+\index{onocr@{onocr}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{onocr}{onocr}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::onocr}\hypertarget{classport_1_1outFlags_abd2808b0c96c90d378a567de95416db8}{}\label{classport_1_1outFlags_abd2808b0c96c90d378a567de95416db8}
+
+
+bool onocr = Don\textquotesingle{}t output CR at column 0. 
+
+c\+\_\+oflag.\+O\+N\+O\+CR\index{port\+::out\+Flags@{port\+::out\+Flags}!opost@{opost}}
+\index{opost@{opost}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{opost}{opost}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::out\+Flags\+::opost}\hypertarget{classport_1_1outFlags_a11cd5d176cbfcee504f49db3ed8a1f44}{}\label{classport_1_1outFlags_a11cd5d176cbfcee504f49db3ed8a1f44}
+
+
+bool opost = Enable implementation-\/defined output processing. 
+
+c\+\_\+oflag.\+O\+P\+O\+ST\index{port\+::out\+Flags@{port\+::out\+Flags}!tabdly@{tabdly}}
+\index{tabdly@{tabdly}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{tabdly}{tabdly}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::out\+Flags\+::tabdly}\hypertarget{classport_1_1outFlags_a9d52874c0c75ede86cb806a0058dbff3}{}\label{classport_1_1outFlags_a9d52874c0c75ede86cb806a0058dbff3}
+
+
+std\+::string tabdly = Horizontal tab delay mask. 
+
+Values are T\+A\+B0, T\+A\+B1, T\+A\+B2, T\+A\+B3 (or X\+T\+A\+BS). A value of T\+A\+B3, that is, X\+T\+A\+BS, expands tabs to spaces (with tab stops every eight columns). \mbox{[}requires \+\_\+\+B\+S\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+S\+V\+I\+D\+\_\+\+S\+O\+U\+R\+CE or \+\_\+\+X\+O\+P\+E\+N\+\_\+\+S\+O\+U\+R\+CE\mbox{]} 
+
+c\+\_\+oflag.\+T\+A\+B\+D\+LY\index{port\+::out\+Flags@{port\+::out\+Flags}!vtdly@{vtdly}}
+\index{vtdly@{vtdly}!port\+::out\+Flags@{port\+::out\+Flags}}
+\subsubsection[{\texorpdfstring{vtdly}{vtdly}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::out\+Flags\+::vtdly}\hypertarget{classport_1_1outFlags_adb8648cf7a33c834075f94396029ef93}{}\label{classport_1_1outFlags_adb8648cf7a33c834075f94396029ef93}
+
+
+std\+::string vtdly = Vertical tab delay mask. 
+
+Values are V\+T0 or V\+T1. 
+
+c\+\_\+oflag.\+V\+T\+D\+LY
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+serial\+\_\+routines.\+h\end{DoxyCompactItemize}

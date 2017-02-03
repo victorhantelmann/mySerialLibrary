@@ -138,22 +138,51 @@ class port {
     void setIXOFF  (bool val);    bool getIXOFF  ();
     void setIXANY  (bool val);    bool getIXANY  ();
     void setIUTF8  (bool val);    bool getIUTF8  ();
-    // c_iflag flag constants for [ INPUT ]
+    /**
+     * \class inFlags
+     * \brief Class containing the statuses of termios.c_iflag, constants for [ INPUT ]
+     */
     class inFlags {
     public:
-    	bool ignbrk;        // IGNBRK   = Ignore BREAK
-    	bool brkint;        // BRKINT   = BREAK causes the input and output queues to be flushed
-    	bool ignpar;        // IGNPAR   = Ignore framing errors and parity errors
-    	bool parmrk;        // PARMRK   = If bit is set, input bytes with parity or framing errors are marked when passed to the program
-    	bool inpck;         // INPCK    = Enable input parity checking
-    	bool istrip;        // ISTRIP   = Strip off eighth bit
-    	bool inlcr;         // INLCR    = Translate NL to CR on input
-    	bool igncr;         // IGNCR    = Ignore carriage return on input
-    	bool icrnl;         // ICRNL    = Translate carriage return to newline on input (unless IGNCR is set)
-    	bool ixon;          // IXON     = Enable XON/XOFF flow control on output
-    	bool ixoff;         // IXOFF    = Enable XON/XOFF flow control on input
-    	bool ixany;         // IXANY    = (XSI) Typing any character will restart stopped output.
-    	bool iutf8;         // IUTF8    = (since Linux 2.6.4) (not in POSIX) Input is UTF8; this allows character-erase to be correctly performed in cooked mode
+        /** \brief bool ignbrk = Ignore BREAK.
+         * <p>c_iflag.IGNBRK</p> */
+    	bool ignbrk;
+        /** \brief bool brkint = BREAK causes the input and output queues to be flushed.
+         * <p>c_iflag.BRKINT</p> */
+    	bool brkint;
+        /** \brief bool ignpar = Ignore framing errors and parity errors.
+         * <p>c_iflag.IGNPAR</p> */
+    	bool ignpar;
+        /** \brief bool parmrk = If bit is set, input bytes with parity or framing errors are marked when passed to the program.
+         * <p>c_iflag.PARMRK</p> */
+    	bool parmrk;
+        /** \brief bool inpck = Enable input parity checking.
+         * <p>c_iflag.INPCK</p> */
+    	bool inpck;
+        /** \brief bool istrip = Strip off eighth bit.
+         * <p>c_iflag.ISTRIP</p> */
+    	bool istrip;
+        /** \brief bool inlcr = Translate NL to CR on input.
+         * <p>c_iflag.INLCR</p> */
+    	bool inlcr;
+        /** \brief bool igncr = Ignore carriage return on input.
+         * <p>c_iflag.IGNCR</p> */
+    	bool igncr;
+        /** \brief bool icrnl = Translate carriage return to newline on input (unless IGNCR is set).
+         * <p>c_iflag.ICRNL</p> */
+    	bool icrnl;
+        /** \brief bool ixon = Enable XON/XOFF flow control on output.
+         * <p>c_iflag.IXON</p> */
+    	bool ixon;
+        /** \brief bool ixoff = Enable XON/XOFF flow control on input.
+         * <p>c_iflag.IXOFF</p> */
+    	bool ixoff;
+        /** \brief bool ixany = (XSI) Typing any character will restart stopped output.
+         * <p>c_iflag.IXANY</p> */
+    	bool ixany;
+        /** \brief bool iutf8 = (since Linux 2.6.4) (not in POSIX) Input is UTF8; this allows character-erase to be correctly performed in cooked mode.
+         * <p>c_iflag.IUTF8</p> */
+    	bool iutf8;
     }inFlags;
 
     // c_oflag flag constants for [ OUTPUT ] -> SET -> GET
@@ -168,20 +197,60 @@ class port {
     int setTABDLY (std::string inStr);    std::string getTABDLY ();
     int setVTDLY  (std::string inStr);    std::string getVTDLY  ();
     int setFFDLY  (std::string inStr);    std::string getFFDLY  ();
-    // c_oflag flag constants for [ OUTPUT ]
+    /**
+     * \class outFlags
+     * \brief Class containing the statuses of termios.c_oflag, constants for [ OUTPUT ]
+     */
     class outFlags {
     public:
-        bool opost;         // OPOST    = Enable implementation-defined output processing
-        bool onlcr;         // ONLCR    = (XSI) Map NL to CR-NL on output
-        bool ocrnl;         // OCRNL    = Map CR to NL on output
-        bool onocr;         // ONOCR    = Don't output CR at column 0
-        bool onlret;        // ONLRET   = Don't output CR
-        bool ofill;         // OFILL    = Send fill characters for a delay, rather than using a timed delay
-        std::string nldly;  // NLDLY   = Newline delay mask. Values are NL0 and NL1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-        std::string crdly;  // CRDLY   = Carriage return delay mask. Values are CR0, CR1, CR2, or CR3. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-        std::string tabdly; // TABDLY  = Horizontal tab delay mask. Values are TAB0, TAB1, TAB2, TAB3 (or XTABS). A value of TAB3, that is, XTABS, expands tabs to spaces (with tab stops every eight columns). [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
-        std::string vtdly;  // VTDLY   = Vertical tab delay mask. Values are VT0 or VT1
-        std::string ffdly;  // FFDLY   = Form feed delay mask.  Values are FF0 or FF1. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+        /** \brief bool opost = Enable implementation-defined output processing.
+         * <p>c_oflag.OPOST</p> */
+        bool opost;
+        /** \brief bool onlcr = (XSI) Map NL to CR-NL on output.
+         * <p>c_oflag.ONLCR</p> */
+        bool onlcr;
+        /** \brief bool ocrnl = Map CR to NL on output.
+         * <p>c_oflag.OCRNL</p> */
+        bool ocrnl;
+        /** \brief bool onocr = Don't output CR at column 0.
+         * <p>c_oflag.ONOCR</p> */
+        bool onocr;
+        /** \brief bool onlret = Don't output CR.
+         * <p>c_oflag.ONLRET</p> */
+        bool onlret;
+        /** \brief bool ofill = Send fill characters for a delay, rather than using a timed delay.
+         * <p>c_oflag.OFILL</p> */
+        bool ofill;
+        /** \brief std::string nldly = Newline delay mask.
+         * \details
+         * Values are NL0 and NL1.
+         * [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+         * <p>c_oflag.NLDLY</p> */
+        std::string nldly;
+        /** \brief std::string crdly = Carriage return delay mask.
+         * \details
+         * Values are CR0, CR1, CR2, or CR3.
+         * [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+         * <p>c_oflag.CRDLY</p> */
+        std::string crdly;
+        /** \brief std::string tabdly = Horizontal tab delay mask.
+         * \details
+         * Values are TAB0, TAB1, TAB2, TAB3 (or XTABS).
+         * A value of TAB3, that is, XTABS, expands tabs to spaces (with tab stops every eight columns).
+         * [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+         * <p>c_oflag.TABDLY</p> */
+        std::string tabdly;
+        /** \brief std::string vtdly = Vertical tab delay mask.
+         * \details
+         * Values are VT0 or VT1.
+         * <p>c_oflag.VTDLY</p> */
+        std::string vtdly;
+        /** \brief std::string ffdly = Form feed delay mask.
+         * \details
+         * Values are FF0 or FF1.
+         * [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+         * <p>c_oflag.FFDLY</p> */
+        std::string ffdly;
     }outFlags;
     // c_cflag flag constants for [ CONTROL ] -> SET -> GET
     int setCSIZE  (std::string inStr);    std::string getCSIZE  ();
@@ -191,16 +260,36 @@ class port {
     void setPARODD (bool val);    bool getPARODD ();
     void setHUPCL  (bool val);    bool getHUPCL  ();
     void setCLOCAL (bool val);    bool getCLOCAL ();
-    // c_cflag flag constants for [ CONTROL ]
+    /**
+     * \class controlFlags
+     * \brief Class containing the statuses of termios.c_cflag, constants for [ CONTROL ]
+     */
     class controlFlags {
     public:
-    	std::string csize;  // CSIZE    = Character size mask. Values are CS5, CS6, CS7, or CS8.
-    	bool cstopb;        // CSTOPB   = Set two stop bits, rather than one
-    	bool cread;         // CREAD    = Enable receiver
-    	bool parenb;        // PARENB   = Enable parity generation on output and parity checking for input
-    	bool parodd;        // PARODD   = If set, then parity for input and output is ODD; otherwise EVEN parity is used
-    	bool hupcl;         // HUPCL    = (hang up) Lower modem control lines after last process closes the device
-    	bool clocal;        // CLOCAL   = Ignore modem control lines
+        /** \brief std::string csize = Form feed delay mask.
+         * \details
+         * Character size mask.
+         * Values are CS5, CS6, CS7, or CS8.
+         * <p>c_cflag.CSIZE</p> */
+    	std::string csize;
+    	/** \brief bool cstopb = Set two stop bits, rather than one.
+    	 * <p>c_cflag.CSTOPB</p> */
+    	bool cstopb;
+    	/** \brief bool cread = Enable receiver.
+    	 * <p>c_cflag.CREAD</p> */
+    	bool cread;
+    	/** \brief bool parenb = Enable parity generation on output and parity checking for input.
+    	 * <p>c_cflag.PARENB</p> */
+    	bool parenb;
+    	/** \brief bool parodd = If set, then parity for input and output is ODD, otherwise EVEN parity is used.
+    	 * <p>c_cflag.PARODD</p> */
+    	bool parodd;
+    	/** \brief bool hupcl = (hang up) Lower modem control lines after last process closes the device.
+    	 * <p>c_cflag.HUPCL</p> */
+    	bool hupcl;
+    	/** \brief bool clocal = Ignore modem control lines.
+    	 * <p>c_cflag.CLOCAL</p> */
+    	bool clocal;
     } controlFlags;
     // c_lflag flag constants for [ LOCAL MODES ] -> SET -> GET
     void setISIG   (bool val);    bool getISIG   ();
@@ -212,18 +301,40 @@ class port {
     void setNOFLSH (bool val);    bool getNOFLSH ();
     void setTOSTOP (bool val);    bool getTOSTOP ();
     void setIEXTEN (bool val);    bool getIEXTEN ();
-    // c_lflag flag constants for [ LOCAL MODES ]
+    /**
+     * \class localFlags
+     * \brief Class containing the statuses of termios.c_lflag, constants for [ LOCAL MODES ]
+     */
     class localFlags {
     public:
-    	bool isig;          // ISIG     = When any of the characters INTR, QUIT, SUSP, or DSUSP are received, generate the corresponding signal
-    	bool icanon;        // ICANON   = Enable canonical mode
-    	bool echo;          // ECHO     = Echo input characters
-    	bool echoe;         // ECHOE    = If ICANON is also set, the ERASE character erases the preceding input character, and WERASE erases the preceding word
-    	bool echok;         // ECHOK    = If ICANON is also set, the KILL character erases the current line
-    	bool echonl;        // ECHONL   = If ICANON is also set, echo the NL character even if ECHO is not set
-    	bool noflsh;        // NOFLSH   = Disable flushing the input and output queues when generating signals for the INT, QUIT, and SUSP characters
-    	bool tostop;        // TOSTOP   = Send the SIGTTOU signal to the process group of a background process which tries to write to its controlling terminal
-    	bool iexten;        // IEXTEN   = Enable implementation-defined input processing. This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE to be interpreted, and for the IUCLC flag to be Actionive
+    	/** \brief bool isig = When any of the characters INTR, QUIT, SUSP, or DSUSP are received, generate the corresponding signal.
+    	 * <p>c_lflag.ISIG</p> */
+    	bool isig;
+    	/** \brief bool icanon = Enable canonical mode.
+    	 * <p>c_lflag.ICANON</p> */
+    	bool icanon;
+    	/** \brief bool echo = Echo input characters.
+    	 * <p>c_lflag.ECHO</p> */
+    	bool echo;
+    	/** \brief bool echoe = If ICANON is also set, the ERASE character erases the preceding input character, and WERASE erases the preceding word.
+    	 * <p>c_lflag.ECHOE</p> */
+    	bool echoe;
+    	/** \brief bool echok = If ICANON is also set, the KILL character erases the current line.
+    	 * <p>c_lflag.ECHOK</p> */
+    	bool echok;
+    	/** \brief bool echonl = If ICANON is also set, echo the NL character even if ECHO is not set.
+    	 * <p>c_lflag.ECHONL</p> */
+    	bool echonl;
+    	/** \brief bool noflsh = Disable flushing the input and output queues when generating signals for the INT, QUIT, and SUSP characters.
+    	 * <p>c_lflag.NOFLSH</p> */
+    	bool noflsh;
+    	/** \brief bool tostop = Send the SIGTTOU signal to the process group of a background process which tries to write to its controlling terminal.
+    	 * <p>c_lflag.TOSTOP</p> */
+    	bool tostop;
+    	/** \brief bool iexten = Enable implementation-defined input processing.
+    	 * This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE to be interpreted, and for the IUCLC flag to be Active.
+    	 * <p>c_lflag.IEXTEN</p> */
+    	bool iexten;
     } localFlags;
     // c_cc array that defines [ SPECIAL CHARACTERS ] -> SET -> GET
     void setVEOF   (bool val);    bool getVEOF   ();
@@ -732,7 +843,7 @@ int port::applyConfig () {
     new_attr.c_lflag = (port::localFlags.tostop) ? (new_attr.c_lflag | (TOSTOP)) : (new_attr.c_lflag & (TOSTOP));
     /* bool localFlags.iexten: IEXTEN = Enable implementation-defined input processing.
      * This flag, as well as ICANON must be enabled for the special characters EOL2, LNEXT, REPRINT, WERASE
-     * to be interpreted, and for the IUCLC flag to be Actionive */
+     * to be interpreted, and for the IUCLC flag to be Active */
     new_attr.c_lflag = (port::localFlags.iexten) ? (new_attr.c_lflag | (IEXTEN)) : (new_attr.c_lflag & (IEXTEN));
     /* bool specialCharFlags.veof:          VEOF   = (004, EOT, Ctrl-D)
      * End-of-file character (EOF).
@@ -802,21 +913,42 @@ int port::restoreConfig () {
 	return result;
 }
 /**
- * !
+ * \brief function bool port::getIGNBRK ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IGNBRK as bool.
+ * Ignore BREAK.
+ * A break condition is defined in the context of asynchronous serial
+ * data transmission as a series of zero-value bits longer than a single byte.
+ * */
+bool port::getIGNBRK ()         { return port::inFlags.ignbrk; }
+/**
  * \brief function void port::setIGNBRK (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IGNBRK.
  * Ignore BREAK.
  * A break condition is defined in the context of asynchronous serial
  * data transmission as a series of zero-value bits longer than a single byte.
  * */
-bool port::getIGNBRK ()         { return port::inFlags.ignbrk; }
 void port::setIGNBRK (bool val) { port::inFlags.ignbrk = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getBRKINT ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.BRKINT as bool.
+ * BREAK causes the input and output queues to be flushed.
+ * If this bit is set and IGNBRK is not set, a break condition clears the terminal
+ * input and output queues and raises a SIGINT signal for the foreground process
+ * group associated with the terminal.
+ * If neither BRKINT nor IGNBRK are set, a break condition is passed to the
+ * application as a single '\0' character if PARMRK is not set,
+ * or otherwise as a three-character sequence '\377', '\0', '\0'.
+ * */
+bool port::getBRKINT ()         { return port::inFlags.brkint; }
+/**
  * \brief function void port::setBRKINT (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.BRKINT.
  * BREAK causes the input and output queues to be flushed.
@@ -827,23 +959,42 @@ void port::setIGNBRK (bool val) { port::inFlags.ignbrk = (val) ? true : false; }
  * application as a single '\0' character if PARMRK is not set,
  * or otherwise as a three-character sequence '\377', '\0', '\0'.
  * */
-bool port::getBRKINT ()         { return port::inFlags.brkint; }
 void port::setBRKINT (bool val) { port::inFlags.brkint = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIGNPAR ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IGNPAR as bool.
+ * If this bit is set, any byte with a framing or parity error is ignored.
+ * This is only useful if INPCK is also set.
+ * */
+bool port::getIGNPAR ()         { return port::inFlags.ignpar; }
+/**
  * \brief function void port::setIGNPAR (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IGNPAR.
  * If this bit is set, any byte with a framing or parity error is ignored.
  * This is only useful if INPCK is also set.
  * */
-bool port::getIGNPAR ()         { return port::inFlags.ignpar; }
 void port::setIGNPAR (bool val) { port::inFlags.ignpar = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getPARMRK ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.PARMRK as bool.
+ * If this bit is set, input bytes with parity or framing errors are marked when passed to the program.
+ * This bit is meaningful only when INPCK is set and IGNPAR is not set.
+ * The way erroneous bytes are marked is with two preceding bytes, 377 and 0.
+ * Thus, the program actually reads three bytes for one erroneous byte received from the terminal.
+ * If a valid byte has the value 0377, and ISTRIP is not set, the program might confuse it
+ * with the prefix that marks a parity error.
+ * So a valid byte 0377 is passed to the program as two bytes, 0377 0377, in this case.
+ * */
+bool port::getPARMRK ()         { return port::inFlags.parmrk; }
+/**
  * \brief function void port::setPARMRK (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.PARMRK.
  * If this bit is set, input bytes with parity or framing errors are marked when passed to the program.
@@ -854,69 +1005,116 @@ void port::setIGNPAR (bool val) { port::inFlags.ignpar = (val) ? true : false; }
  * with the prefix that marks a parity error.
  * So a valid byte 0377 is passed to the program as two bytes, 0377 0377, in this case.
  * */
-bool port::getPARMRK ()         { return port::inFlags.parmrk; }
 void port::setPARMRK (bool val) { port::inFlags.parmrk = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getINPCK ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.INPCK as bool.
+ * If this bit is set, input parity checking is enabled.
+ * If it is not set, no checking at all is done for parity errors on input and
+ * the characters are simply passed through to the application.
+ * */
+bool port::getINPCK ()         { return port::inFlags.inpck; }
+/**
  * \brief function void port::setINPCK (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.INPCK.
  * If this bit is set, input parity checking is enabled.
  * If it is not set, no checking at all is done for parity errors on input and
  * the characters are simply passed through to the application.
  * */
-bool port::getINPCK ()         { return port::inFlags.inpck; }
 void port::setINPCK (bool val) { port::inFlags.inpck = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getISTRIP ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ISTRIP as bool.
+ * If this bit is set, valid input bytes are stripped to seven bits.
+ * Otherwise, all eight bits are available for programs to read.
+ * */
+bool port::getISTRIP ()         { return port::inFlags.istrip; }
+/**
  * \brief function void port::setISTRIP (bool val)
- * \param v as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ISTRIP.
  * If this bit is set, valid input bytes are stripped to seven bits.
  * Otherwise, all eight bits are available for programs to read.
  * */
-bool port::getISTRIP ()         { return port::inFlags.istrip; }
 void port::setISTRIP (bool val) { port::inFlags.istrip = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setINLCR (bool val)
- * \param value as bool
+ * \brief function bool port::getINLCR ()
+ * \returns bool
  * \details
- * Action: changes termios.INLCR.
- * If this bit is set, newline characters ('\n') received as input are passed
- * to the application as carriage return characters ('\r').
+ * Action: returns status of termios.INLCR as bool.
+ * If this bit is set, newline characters ("\n") received as input are passed
+ * to the application as carriage return characters ("\r").
  * */
 bool port::getINLCR ()         { return port::inFlags.inlcr; }
+/**
+ * \brief function void port::setINLCR (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.INLCR.
+ * If this bit is set, newline characters ("\n") received as input are passed
+ * to the application as carriage return characters ("\r").
+ * */
 void port::setINLCR (bool val) { port::inFlags.inlcr = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setIGNCR (bool val)
- * \param value as bool
+ * \brief function bool port::getIGNCR ()
+ * \returns bool
  * \details
- * Action: changes termios.IGNCR.
- * If this bit is set, carriage return characters ('\r') are discarded on input.
+ * Action: returns status of termios.IGNCR as bool.
+ * If this bit is set, carriage return characters ("\r") are discarded on input.
  * Discarding carriage return may be useful on terminals that send both carriage
- * return and linefeed when you type the RET key.
+ * return and line-feed when you type the RET key.
  * */
 bool port::getIGNCR ()         { return port::inFlags.igncr; }
+/**
+ * \brief function void port::setIGNCR (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.IGNCR.
+ * If this bit is set, carriage return characters ("\r") are discarded on input.
+ * Discarding carriage return may be useful on terminals that send both carriage
+ * return and line-feed when you type the RET key.
+ * */
 void port::setIGNCR (bool val) { port::inFlags.igncr = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setICRNL (bool val)
- * \param value as bool
+ * \brief function bool port::getICRNL ()
+ * \returns bool
  * \details
- * Action: changes termios.ICRNL.
- * If this bit is set and IGNCR is not set, carriage return characters ('\r')
- * received as input are passed to the application as newline characters ('\n').
+ * Action: returns status of termios.ICRNL as bool.
+ * If this bit is set and IGNCR is not set, carriage return characters ("\r")
+ * received as input are passed to the application as newline characters ("\n").
  * */
 bool port::getICRNL ()         { return port::inFlags.icrnl; }
+/**
+ * \brief function void port::setICRNL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.ICRNL.
+ * If this bit is set and IGNCR is not set, carriage return characters ("\r")
+ * received as input are passed to the application as newline characters ("\n").
+ * */
 void port::setICRNL (bool val) { port::inFlags.icrnl = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIXON ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IXON as bool.
+ * If this bit is set, start/stop control on output is enabled.
+ * In other words, if the computer receives a STOP character, it suspends output
+ * until a START character is received.
+ * In this case, the STOP and START characters are never passed to the application program.
+ * If this bit is not set, then START and STOP can be read as ordinary characters.
+ * */
+bool port::getIXON ()         { return port::inFlags.ixon; }
+/**
  * \brief function void port::setIXON (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IXON.
  * If this bit is set, start/stop control on output is enabled.
@@ -925,12 +1123,23 @@ void port::setICRNL (bool val) { port::inFlags.icrnl = (val) ? true : false; }
  * In this case, the STOP and START characters are never passed to the application program.
  * If this bit is not set, then START and STOP can be read as ordinary characters.
  * */
-bool port::getIXON ()         { return port::inFlags.ixon; }
 void port::setIXON (bool val) { port::inFlags.ixon = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIXOFF ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IXOFF as bool.
+ * If this bit is set, start/stop control on input is enabled.
+ * In other words, the computer sends STOP and START characters as necessary
+ * to prevent input from coming in faster than programs are reading it.
+ * The idea is that the actual terminal hardware that is generating the input
+ * data responds to a STOP character by suspending transmission,
+ * and to a START character by resuming transmission.
+ * */
+bool port::getIXOFF ()         { return port::inFlags.ixoff; }
+/**
  * \brief function void port::setIXOFF (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IXOFF.
  * If this bit is set, start/stop control on input is enabled.
@@ -940,100 +1149,188 @@ void port::setIXON (bool val) { port::inFlags.ixon = (val) ? true : false; }
  * data responds to a STOP character by suspending transmission,
  * and to a START character by resuming transmission.
  * */
-bool port::getIXOFF ()         { return port::inFlags.ixoff; }
 void port::setIXOFF (bool val) { port::inFlags.ixoff = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIXANY ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IXANY as bool.
+ * If this bit is set, any input character restarts output
+ * when output has been suspended with the STOP character.
+ * Otherwise, only the START character restarts output.
+ * */
+bool port::getIXANY ()         { return port::inFlags.ixany; }
+/**
  * \brief function void port::setIXANY (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IXANY.
  * If this bit is set, any input character restarts output
  * when output has been suspended with the STOP character.
  * Otherwise, only the START character restarts output.
  * */
-bool port::getIXANY ()         { return port::inFlags.ixany; }
 void port::setIXANY (bool val) { port::inFlags.ixany = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIUTF8 ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IUTF8 as bool.
+ * (since Linux 2.6.4) (not in POSIX) Input is UTF8.
+ * This allows character-erase to be correctly performed in cooked mode.
+ * */
+bool port::getIUTF8 ()         { return port::inFlags.iutf8; }
+/**
  * \brief function void port::setIUTF8 (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IUTF8.
  * (since Linux 2.6.4) (not in POSIX) Input is UTF8.
  * This allows character-erase to be correctly performed in cooked mode.
  * */
-bool port::getIUTF8 ()         { return port::inFlags.iutf8; }
 void port::setIUTF8 (bool val) { port::inFlags.iutf8 = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getOPOST ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.OPOST as bool.
+ * If this bit is set, output data is processed in some unspecified way
+ * so that it is displayed appropriately on the terminal device.
+ * This typically includes mapping newline characters ('\n') onto
+ * carriage return and line-feed pairs.
+ * If this bit isn't set, the characters are transmitted as-is.
+ * */
+bool port::getOPOST ()         { return port::outFlags.opost; }
+/**
  * \brief function void port::setOPOST (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.OPOST.
  * If this bit is set, output data is processed in some unspecified way
  * so that it is displayed appropriately on the terminal device.
  * This typically includes mapping newline characters ('\n') onto
- * carriage return and linefeed pairs.
+ * carriage return and line-feed pairs.
  * If this bit isn't set, the characters are transmitted as-is.
  * */
-bool port::getOPOST ()         { return port::outFlags.opost; }
 void port::setOPOST (bool val) { port::outFlags.opost = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getONLCR ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ONLCR as bool.
+ * If this bit is set, convert the newline character on output into
+ * a pair of characters, carriage return followed by line-feed.
+ * */
+bool port::getONLCR ()         { return port::outFlags.onlcr; }
+/**
  * \brief function void port::setONLCR (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ONLCR.
  * If this bit is set, convert the newline character on output into
- * a pair of characters, carriage return followed by linefeed.
+ * a pair of characters, carriage return followed by line-feed.
  * */
-bool port::getONLCR ()         { return port::outFlags.onlcr; }
 void port::setONLCR (bool val) { port::outFlags.onlcr = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setOCRNL (bool val)
- * \param value as bool
+ * \brief function bool port::getOCRNL ()
+ * \returns bool
  * \details
- * Action: changes termios.OCRNL.
- * If this bit is set, convert the carriage return to linefeed.
+ * Action: returns status of termios.OCRNL as bool.
+ * If this bit is set, convert the carriage return to line-feed.
  * */
 bool port::getOCRNL ()         { return port::outFlags.ocrnl; }
+/**
+ * \brief function void port::setOCRNL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.OCRNL.
+ * If this bit is set, convert the carriage return to line-feed.
+ * */
 void port::setOCRNL (bool val) { port::outFlags.ocrnl = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getONOCR ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ONOCR as bool.
+ * If this bit is set, don't output carriage return at column 0.
+ * */
+bool port::getONOCR ()         { return port::outFlags.onocr; }
+/**
  * \brief function void port::setONOCR (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ONOCR.
  * If this bit is set, don't output carriage return at column 0.
  * */
-bool port::getONOCR ()         { return port::outFlags.onocr; }
 void port::setONOCR (bool val) { port::outFlags.onocr = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setONLRET (bool val)
- * \param value as bool
+ * \brief function bool port::getONLRET ()
+ * \returns bool
  * \details
- * Action: changes termios.ONLRET.
- * If this bit is set, don't output carriage return at all.
+ * Action: returns status of termios.ONLRET as bool.
+ * NL performs the CR function.
+ * If this flag is set, the NL character is assumed to do the carriage-return function.
+ * The column pointer is set to 0, and the delay specified for carriage return is used.
+ * If neither the ONLCR, OCRNL, ONOCR, nor ONLRET flag is set, the NL character is
+ * assumed to do the line-feed function only.
+ * The column pointer remains unchanged.
+ * The column pointer is also set to 0 if the CR character is actually transmitted.
+ * The delay bits specify how long a transmission stops to allow for mechanical
+ * or other movement when certain characters are sent to the terminal.
+ * The actual delays depend on line speed and system load.
  * */
 bool port::getONLRET () { return port::outFlags.onlret; }
+/**
+ * \brief function void port::setONLRET (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.ONLRET.
+ * NL performs the CR function.
+ * If this flag is set, the NL character is assumed to do the carriage-return function.
+ * The column pointer is set to 0, and the delay specified for carriage return is used.
+ * If neither the ONLCR, OCRNL, ONOCR, nor ONLRET flag is set, the NL character is
+ * assumed to do the line-feed function only.
+ * The column pointer remains unchanged.
+ * The column pointer is also set to 0 if the CR character is actually transmitted.
+ * The delay bits specify how long a transmission stops to allow for mechanical
+ * or other movement when certain characters are sent to the terminal.
+ * The actual delays depend on line speed and system load.
+ * */
 void port::setONLRET (bool val) { port::outFlags.onlret = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setOFILL (bool val)
- * \param value as bool
+ * \brief function bool port::getOFILL ()
+ * \returns bool
  * \details
- * Action: changes termios.OFILL.
- * If this bit is set, send fill characters for a delay, rather than using a timed delay.
+ * Action: returns status of termios.OFILL as bool.
+ * Uses fill characters for delay.
+ * If this flag is set, fill characters are transmitted for a delay instead of a timed delay.
+ * This is useful for high baud rate terminals that need only a minimal delay.
  * */
 bool port::getOFILL () { return port::outFlags.ofill; }
+/**
+ * \brief function void port::setOFILL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.OFILL.
+ * Uses fill characters for delay.
+ * If this flag is set, fill characters are transmitted for a delay instead of a timed delay.
+ * This is useful for high baud rate terminals that need only a minimal delay.
+ * */
 void port::setOFILL (bool val) { port::outFlags.ofill = (val) ? true : false; }
 /**
- * !
+ * \brief function std::string port::getNLDLY ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.NLDLY as std::string.
+ * Newline delay mask. [requires _BSD_SOURCE or _SVID_SOURCE or _XOPEN_SOURCE]
+ * NL0 = No delay.
+ * NL1 = 0.10 seconds delay.
+ * If ONLRET is set, then carriage-return delays are used instead of newline delays.
+ * If OFILL  is set, then two fill characters are transmitted.
+ * */
+std::string port::getNLDLY () { return port::outFlags.nldly; }
+/**
  * \brief function int port::setNLDLY (std::string inStr)
- * \param std::string values are NL0 and NL1
+ * \param inStr as std::string, values are NL0 and NL1
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.NLDLY.
@@ -1043,7 +1340,6 @@ void port::setOFILL (bool val) { port::outFlags.ofill = (val) ? true : false; }
  * If ONLRET is set, then carriage-return delays are used instead of newline delays.
  * If OFILL  is set, then two fill characters are transmitted.
  * */
-std::string port::getNLDLY () { return port::outFlags.nldly; }
 int port::setNLDLY (std::string inStr) {
 	if (inStr.compare("NL0") == 0 || inStr.compare("nl0") == 0 ||
 		inStr.compare("Nl0") == 0 || inStr.compare("nL0") == 0) { port::outFlags.nldly = "NL0";	return 0;
@@ -1052,9 +1348,20 @@ int port::setNLDLY (std::string inStr) {
 	return -1;
 }
 /**
- * !
+ * \brief function std::string port::getCRDLY ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.CRDLY as std::string.
+ * Delay associated with carriage-return character.
+ * CR0 = No delay.
+ * CR1 = Delay dependent on column position, or if OFILL is set then two fill characters are transmitted.
+ * CR2 = 0.10 seconds delay, or if OFILL is set then four fill characters are transmitted.
+ * CR3 = 0.15 seconds delay.
+ * */
+std::string port::getCRDLY () { return port::outFlags.crdly; }
+/**
  * \brief function int port::setCRDLY (std::string inStr)
- * \param std::string inStr values are CR0, CR1, CR2 and CR3
+ * \param inStr as std::string, values are CR0, CR1, CR2 and CR3
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.CRDLY.
@@ -1064,7 +1371,6 @@ int port::setNLDLY (std::string inStr) {
  * CR2 = 0.10 seconds delay, or if OFILL is set then four fill characters are transmitted.
  * CR3 = 0.15 seconds delay.
  * */
-std::string port::getCRDLY () { return port::outFlags.crdly; }
 int port::setCRDLY (std::string inStr) {
 	if        (inStr.compare("CR0") == 0 || inStr.compare("cr0") == 0 ||
 		       inStr.compare("Cr0") == 0 || inStr.compare("cR0") == 0) { port::outFlags.crdly = "CR0"; return 0;
@@ -1077,9 +1383,20 @@ int port::setCRDLY (std::string inStr) {
 	return -1;
 }
 /**
- * !
- * \brief function int port::setTABDLY (std::string inStr)
- * \param std::string inStr values are TAB0, TAB1, TAB2 and TAB3
+ * \brief function std::string port::getTABDLY ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.TABDLY as std::string.
+ * Delay associated with tab character.
+ * TAB0 = No horizontal tab processing.
+ * TAB1 = Delay dependent on column position, or if OFILL is set then two fill characters are transmitted.
+ * TAB2 = 0.10 seconds delay, or if OFILL is set then two fill characters are transmitted.
+ * TAB3 = Tabs are expanded into spaces.
+ * */
+std::string port::getTABDLY () { return port::outFlags.tabdly; }
+/**
+ * \brief function int port::setTABDLY (string inStr)
+ * \param inStr as std::string, values are TAB0, TAB1, TAB2 and TAB3
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.TABDLY.
@@ -1089,7 +1406,6 @@ int port::setCRDLY (std::string inStr) {
  * TAB2 = 0.10 seconds delay, or if OFILL is set then two fill characters are transmitted.
  * TAB3 = Tabs are expanded into spaces.
  * */
-std::string port::getTABDLY () { return port::outFlags.tabdly; }
 int port::setTABDLY (std::string inStr) {
 	if (inStr.compare("TAB0") == 0 || inStr.compare("Tab0") == 0 || inStr.compare("tab0") == 0) {
 		port::outFlags.tabdly = "TAB0"; return 0;
@@ -1103,9 +1419,18 @@ int port::setTABDLY (std::string inStr) {
 	return -1;
 }
 /**
- * !
- * \brief function int port::setVTDLY (std::string inStr)
- * \param std::string inStr values are VT0, VT1
+ * \brief function std::string port::getVTDLY ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.VTDLY as std::string.
+ * Delay associated with vertical-tab processing.
+ * VT0 = No delay.
+ * VT1 = 2 seconds delay.
+ * */
+std::string port::getVTDLY () { return port::outFlags.vtdly; }
+/**
+ * \brief function int port::setVTDLY (string inStr)
+ * \param inStr as std::string, values are VT0, VT1
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.VTDLY.
@@ -1113,7 +1438,6 @@ int port::setTABDLY (std::string inStr) {
  * VT0 = No delay.
  * VT1 = 2 seconds delay.
  * */
-std::string port::getVTDLY () { return port::outFlags.vtdly; }
 int port::setVTDLY (std::string inStr) {
 	if (inStr.compare("VT0") == 0 || inStr.compare("vt0") == 0 ||
 		inStr.compare("Vt0") == 0 || inStr.compare("vT0") == 0) {
@@ -1125,9 +1449,18 @@ int port::setVTDLY (std::string inStr) {
 	return -1;
 }
 /**
- * !
- * \brief function int port::setFFDLY (std::string inStr)
- * \param std::string inStr values are FF0, FF1
+ * \brief function std::string port::getFFDLY ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.FFDLY as std::string.
+ * Delay associated with form-feed processing.
+ * FF0 = No delay.
+ * FF1 = 2 seconds delay.
+ * */
+std::string port::getFFDLY () { return port::outFlags.ffdly; }
+/**
+ * \brief function int port::setFFDLY (string inStr)
+ * \param inStr as std::string, values are FF0, FF1
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.FFDLY.
@@ -1135,7 +1468,6 @@ int port::setVTDLY (std::string inStr) {
  * FF0 = No delay.
  * FF1 = 2 seconds delay.
  * */
-std::string port::getFFDLY () { return port::outFlags.ffdly; }
 int port::setFFDLY (std::string inStr) {
 	if (inStr.compare("FF0") == 0 || inStr.compare("ff0") == 0 ||
 		inStr.compare("Ff0") == 0 || inStr.compare("fF0") == 0) {
@@ -1147,9 +1479,27 @@ int port::setFFDLY (std::string inStr) {
 	return -1;
 }
 /**
- * !
- * \brief function int port::setCSIZE (std::string inStr)
- * \param std::string inStr values are CS5, CS6, CS7, or CS8.
+ * \brief function std::string port::getCSIZE ()
+ * \returns std::string
+ * \details
+ * Action: returns status of termios.CSIZE as std::string.
+ * Is a collection of bits indicating the number of bits per byte
+ * (not counting the parity bit, if any).
+ * These bits specify byte size for both transmission and reception.
+ * Possible settings of CSIZE are given with the following symbols:
+ * CS5 - 5 bits per byte
+ * CS6 - 6 bits per byte
+ * CS7 - 7 bits per byte
+ * CS8 - 8 bits per byte
+ * Using z/OS UNIX pseudoterminal support, all values are accepted,
+ * but CSIZE is changed to CS8.
+ * Using z/OS UNIX Outboard Communications Server (OCS) support,
+ * the specified value is used.
+ * */
+std::string port::getCSIZE () { return port::controlFlags.csize; }
+/**
+ * \brief function int port::setCSIZE (string inStr)
+ * \param inStr as std::string, values are CS5, CS6, CS7, or CS8.
  * \returns int, 0 if OK, -1 if ERROR
  * \details
  * Action: changes termios.CSIZE.
@@ -1166,7 +1516,6 @@ int port::setFFDLY (std::string inStr) {
  * Using z/OS UNIX Outboard Communications Server (OCS) support,
  * the specified value is used.
  * */
-std::string port::getCSIZE () { return port::controlFlags.csize; }
 int port::setCSIZE (std::string inStr) {
 	if (inStr.compare("CS5") == 0 || inStr.compare("cs5") == 0 ||
 		inStr.compare("Cs5") == 0 || inStr.compare("sS5") == 0) {
@@ -1184,98 +1533,160 @@ int port::setCSIZE (std::string inStr) {
 	return -1;
 }
 /**
- * !
- * \brief function void port::setCSTOPB (bool val)
- * \param value as bool
+ * \brief function bool port::getCSTOPB ()
+ * \returns bool
  * \details
- * Action: changes termios.CSTOPB.
- * Sends two stop bits when necessary.
+ * Action: returns status of termios.CSTOPB as bool.
  * If CSTOPB is 0, only one stop bit is used.
+ * If CSTOPB is 1, sends two stop bits.
  * Using z/OS UNIX pseudoterminal support, this bit is always 0.
  * Using z/OS UNIX OCS support, the specified value is used.
  * */
 bool port::getCSTOPB ()         { return port::controlFlags.cstopb; }
+/**
+ * \brief function void port::setCSTOPB (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.CSTOPB.
+ * If CSTOPB is 0, only one stop bit is used.
+ * If CSTOPB is 1, sends two stop bits.
+ * Using z/OS UNIX pseudoterminal support, this bit is always 0.
+ * Using z/OS UNIX OCS support, the specified value is used.
+ * */
 void port::setCSTOPB (bool val) { port::controlFlags.cstopb = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getCREAD ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.CREAD as bool.
+ * Enables reception.
+ * If this bit is set to 0, no input characters are received from the terminal.
+ * Using z/OS UNIX pseudoterminal support, this bit is always enabled and set to 1.
+ * */
+bool port::getCREAD ()         { return port::controlFlags.cread; }
+/**
  * \brief function void port::setCREAD (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.CREAD.
  * Enables reception.
  * If this bit is set to 0, no input characters are received from the terminal.
  * Using z/OS UNIX pseudoterminal support, this bit is always enabled and set to 1.
  * */
-bool port::getCREAD ()         { return port::controlFlags.cread; }
 void port::setCREAD (bool val) { port::controlFlags.cread = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getPARENB ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.PARENB as bool.
+ * Enables parity generation and detection.
+ * If PARENB is 1, a parity bit is added to each character on output, and expected from each
+ * character on input.
+ * If PARENB is 0, no parity bit is added to output characters, and input characters are not
+ * checked for correct parity.
+ * */
+bool port::getPARENB ()         { return port::controlFlags.parenb; }
+/**
  * \brief function void port::setPARENB (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.PARENB.
  * Enables parity generation and detection.
- * A parity bit is added to each character on output, and expected from each character on input.
- * If this bit is not set, no parity bit is added to output characters,
- * and input characters are not checked for correct parity.
- * <IBM> Under z/OS UNIX, if this bit is set to 1 in a request, it is ignored.
- * It is always set to 0.
- * <IBM> Using z/OS UNIX OCS support, the specified value is used.
+ * If PARENB is 1, a parity bit is added to each character on output, and expected from each
+ * character on input.
+ * If PARENB is 0, no parity bit is added to output characters, and input characters are not
+ * checked for correct parity.
  * */
-bool port::getPARENB ()         { return port::controlFlags.parenb; }
 void port::setPARENB (bool val) { port::controlFlags.parenb = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setPARODD (bool val)
- * \param value as bool
+ * \brief function bool port::getPARODD ()
+ * \returns bool
  * \details
- * Action: changes termios.PARODD.
- * Indicates odd parity (when parity is enabled).
- * If PARODD is 0, even parity is used (when parity is enabled).
- * <IBM> Under z/OS UNIX, if this bit is set to 1 in a request, it is ignored.
- * It is always set to 0.
- * <IBM> Using z/OS UNIX OCS support, the specified value is used.
+ * Action: returns status of termios.PARODD as bool.
+ * If PARODD is 0, even parity is used
+ * if PARODD is 1, odd parity is used
+ * Works only if parity PARENB is enabled = 1.
  * */
 bool port::getPARODD ()         { return port::controlFlags.parodd; }
+/**
+ * \brief function void port::setPARODD (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.PARODD.
+ * Action: returns status of termios.PARODD as bool.
+ * If PARODD is 0, even parity is used
+ * if PARODD is 1, odd parity is used
+ * Works only if parity PARENB is enabled = 1.
+ * */
 void port::setPARODD (bool val) { port::controlFlags.parodd = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setHUPCL (bool val)
- * \param value as bool
+ * \brief function bool port::getHUPCL ()
+ * \returns bool
  * \details
- * Action: changes termios.HUPCL.
- * Lowers the modem control lines for a port when
- * the last process that has the port open closes
+ * Action: returns status of termios.HUPCL as bool.
+ * Lowers the modem control lines for a port when the last process that has the port open closes
  * the port (or the process ends).
- * In other words, this tells the system to hang up
- * when all relevant processes have finished using the port.
- * For pseudoterminals HUPCL controls what happens when
- * the slave pseudoterminals is closed. If HUPCL is set when
- * the last file descriptor for the slave pseudoterminal is
+ * In other words, this tells the system to hang up when all relevant processes have
+ * finished using the port.
+ * For pseudo-terminals HUPCL controls what happens when the slave pseudo-terminals is closed.
+ * If HUPCL is 1, when the last file descriptor for the slave pseudoterminal is
  * closed, then the slave pseudoterminal cannot be re-opened.
- * The master terminal has to be closed and re-opened before
- * the pair can be used again.
+ * The master terminal has to be closed and re-opened before the pair can be used again.
  * */
 bool port::getHUPCL ()         { return port::controlFlags.hupcl; }
+/**
+ * \brief function void port::setHUPCL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.HUPCL.
+ * Lowers the modem control lines for a port when the last process that has the port open closes
+ * the port (or the process ends).
+ * In other words, this tells the system to hang up when all relevant processes have
+ * finished using the port.
+ * For pseudo-terminals HUPCL controls what happens when the slave pseudo-terminals is closed.
+ * If HUPCL is 1, when the last file descriptor for the slave pseudoterminal is
+ * closed, then the slave pseudoterminal cannot be re-opened.
+ * The master terminal has to be closed and re-opened before the pair can be used again.
+ * */
 void port::setHUPCL (bool val) { port::controlFlags.hupcl = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setCLOCAL (bool val)
- * \param value as bool
+ * \brief function bool port::getCLOCAL ()
+ * \returns bool
  * \details
- * Action: changes termios.CLOCAL.
- * Ignores modem status lines.
- * A call to open() returns immediately without waiting
- * for a modem connection to complete.
- * If this bit is set to 0, modem status lines are monitored
- * and open() waits for the modem connection.
+ * Action: returns status of termios.CLOCAL as bool.
+ * Specifies a local line.
+ * If CLOCAL is 1, the line is assumed to have a local, direct connection with no modem control.
+ * If CLOCAL is 0, modem control (dial-up connection) is assumed.
  * */
 bool port::getCLOCAL ()         { return port::controlFlags.clocal; }
+/**
+ * \brief function void port::setCLOCAL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.CLOCAL.
+ * Specifies a local line.
+ * If CLOCAL is 1, the line is assumed to have a local, direct connection with no modem control.
+ * If CLOCAL is 0, modem control (dial-up connection) is assumed.
+ * */
 void port::setCLOCAL (bool val) { port::controlFlags.clocal = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getISIG ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ICSIG as bool.
+ * If ISIG is set to 1, signals are generated if special control characters
+ * are entered so:
+ *   SIGINT is generated if INTR is entered;
+ *   SIGQUIT is generated if QUIT is entered;
+ *   SIGTSTP is generated if SUSP is entered and job control is supported.
+ * The special control characters are controlled by the c_cc member.
+ * If ISIG is 0, the system does not generate signals when these special
+ * control characters are entered.
+ * */
+bool port::getISIG ()         { return port::localFlags.isig; }
+/**
  * \brief function void port::setISIG (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ISIG.
  * If ISIG is set to 1, signals are generated if special control characters
@@ -1287,12 +1698,33 @@ void port::setCLOCAL (bool val) { port::controlFlags.clocal = (val) ? true : fal
  * If ISIG is 0, the system does not generate signals when these special
  * control characters are entered.
  * */
-bool port::getISIG ()         { return port::localFlags.isig; }
 void port::setISIG (bool val) { port::localFlags.isig = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getICANON ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ICANON as bool.
+ * Enables canonical input processing, also called line mode.
+ * Input is not delivered to the application until an entire line has been input.
+ * The end of a line is indicated by:
+ *   - a newline,
+ *   - End Of File (EOF),
+ *   - EOL character (where the character used as the EOL character
+ *     is directed by the c_cc member of the termios structure).
+ * Canonical input processing uses the ERASE character to erase a single input
+ * character, and the KILL character to erase an entire line.
+ * The MAX_CANON value specifies the maximum number of bytes in an input line in
+ * canonical mode.
+ * If ICANON is 0, read requests take input directly from the input queue so:
+ *    the system does not wait for the user to enter a complete line. This is
+ *    called noncanonical mode. ERASE and KILL characters are not handled by
+ *    the system but passed directly to the application.
+ * See also the descriptions of MIN and TIME in the c_cc member.
+ * */
+bool port::getICANON ()         { return port::localFlags.icanon; }
+/**
  * \brief function void port::setICANON (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ICANON.
  * Enables canonical input processing, also called line mode.
@@ -1312,23 +1744,41 @@ void port::setISIG (bool val) { port::localFlags.isig = (val) ? true : false; }
  *    the system but passed directly to the application.
  * See also the descriptions of MIN and TIME in the c_cc member.
  * */
-bool port::getICANON ()         { return port::localFlags.icanon; }
 void port::setICANON (bool val) { port::localFlags.icanon = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setECHO (bool val)
- * \param value as bool
+ * \brief function bool port::getECHO ()
+ * \returns bool
  * \details
- * Action: changes termios.ECHO.
- * Echoes input characters back to the terminal.
- * If this is bit is 0, input characters are not echoed.
+ * Action: returns status of termios.ECHO as bool.
+ * If ECHO is 1, echoes input characters back to the terminal.
+ * If ECHO is 0, input characters are not echoed.
  * */
 bool port::getECHO ()         { return port::localFlags.echo; }
+/**
+ * \brief function void port::setECHO (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.ECHO.
+ * If ECHO is 1, echoes input characters back to the terminal.
+ * If ECHO is 0, input characters are not echoed.
+ * */
 void port::setECHO (bool val) { port::localFlags.echo = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getECHOE ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ECHOE as bool.
+ * Echoes the ERASE character as an error-correcting backspace.
+ * When the user inputs an ERASE character, the terminal erases
+ * the last character in the current line from the display (if possible).
+ * The character used as the ERASE character is dictated by the c_cc member
+ * of the termios structure.
+ * ECHOE has an effect only if the ICANON bit is 1.
+ * */
+bool port::getECHOE ()         { return port::localFlags.echoe; }
+/**
  * \brief function void port::setECHOE (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ECHOE.
  * Echoes the ERASE character as an error-correcting backspace.
@@ -1338,50 +1788,73 @@ void port::setECHO (bool val) { port::localFlags.echo = (val) ? true : false; }
  * of the termios structure.
  * ECHOE has an effect only if the ICANON bit is 1.
  * */
-bool port::getECHOE ()         { return port::localFlags.echoe; }
 void port::setECHOE (bool val) { port::localFlags.echoe = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setECHOK (bool val)
- * \param value as bool
+ * \brief function bool port::getECHOK ()
+ * \returns bool
  * \details
- * Action: changes termios.ECHOK.
- * Either causes the terminal to erase the line from the display,
- * or echoes the KILL character followed by an \n character.
+ * Action: returns status of termios.ECHOK as bool.
+ * Echoes the NL character after kill.
+ * If the ECHOK flag is set, the NL character is echoed after the kill character is received.
+ * This emphasizes that the line is deleted.
  * ECHOK has an effect only if the ICANON bit is set to 1.
  * */
 bool port::getECHOK ()         { return port::localFlags.echok; }
+/**
+ * \brief function void port::setECHOK (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.ECHOK.
+ * Echoes the NL character after kill.
+ * If the ECHOK flag is set, the NL character is echoed after the kill character is received.
+ * This emphasizes that the line is deleted.
+ * ECHOK has an effect only if the ICANON bit is set to 1.
+ * */
 void port::setECHOK (bool val) { port::localFlags.echok = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getECHONL ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.ECHONL as bool.
+ * Echoes the newline (line-feed) character ‘\n’ even if the ECHO bit is off.
+ * ECHONL has an effect only if the ICANON bit is set to 1.
+ * */
+bool port::getECHONL ()         { return port::localFlags.echonl; }
+/**
  * \brief function void port::setECHOK (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.ECHOK.
  * Echoes the newline (line-feed) character ‘\n’ even if the ECHO bit is off.
  * ECHONL has an effect only if the ICANON bit is set to 1.
  * */
-bool port::getECHONL ()         { return port::localFlags.echonl; }
 void port::setECHONL (bool val) { port::localFlags.echonl = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setNOFLSH (bool val)
- * \param value as bool
+ * \brief function bool port::getNOFLSH ()
+ * \returns bool
  * \details
- * Action: changes termios.NOFLSH.
- * If this bit is set to 1, the system does not flush the input and output queues
- * if a signal is generated by one of the special characters described in ISIG above.
- * If NOFLSH is set to 0, the queues are flushed if one of the special characters is found.
+ * Action: returns status of termios.NOFLSH as bool.
+ * If NOFLSH is 1, the system does not flush the input and output queues
+ * if a signal is generated by one of the special characters described in ISIG.
+ * If NOFLSH is 0, the queues are flushed if one of the special characters is found.
  * */
 bool port::getNOFLSH ()         { return port::localFlags.noflsh; }
+/**
+ * \brief function void port::setNOFLSH (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.NOFLSH.
+ * If NOFLSH is 1, the system does not flush the input and output queues
+ * if a signal is generated by one of the special characters described in ISIG.
+ * If NOFLSH is 0, the queues are flushed if one of the special characters is found.
+ * */
 void port::setNOFLSH (bool val) { port::localFlags.noflsh = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setTOSTOP (bool val)
- * \param value as bool
+ * \brief function bool port::getTOSTOP ()
+ * \returns bool
  * \details
- * Action: changes termios.TOSTOP.
- * If this bit is set to 1, a SIGTTOU signal is sent to the process group of a process
+ * Action: returns status of termios.TOSTOP as bool.
+ * If TOSTOP is 1, a SIGTTOU signal is sent to the process group of a process
  * that tries to write to a terminal when it is not in the terminal's foreground process
  * group. However, if the process that tries to write to the terminal is blocking or
  * ignoring SIGTTOU signals, the system does not raise the SIGTTOU signal.
@@ -1389,11 +1862,30 @@ void port::setNOFLSH (bool val) { port::localFlags.noflsh = (val) ? true : false
  * stream, and no signal is raised.
  * */
 bool port::getTOSTOP ()         { return port::localFlags.tostop; }
+/**
+ * \brief function void port::setTOSTOP (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.TOSTOP.
+ * If TOSTOP is 1, a SIGTTOU signal is sent to the process group of a process
+ * that tries to write to a terminal when it is not in the terminal's foreground process
+ * group. However, if the process that tries to write to the terminal is blocking or
+ * ignoring SIGTTOU signals, the system does not raise the SIGTTOU signal.
+ * If TOSTOP is 0, output from background processes is output to the current output
+ * stream, and no signal is raised.
+ * */
 void port::setTOSTOP (bool val) { port::localFlags.tostop = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getIEXTEN ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.IEXTEN as bool.
+ * IEXTEN reports if extended implementation-defined functions are enabled.
+ * */
+bool port::getIEXTEN ()         { return port::localFlags.iexten; }
+/**
  * \brief function void port::setIEXTEN (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.IEXTEN.
  * Enables extended implementation-defined functions.
@@ -1402,12 +1894,26 @@ void port::setTOSTOP (bool val) { port::localFlags.tostop = (val) ? true : false
  * the special character is placed in the input queue without doing the
  * "special character" processing and the backslash is discarded.
  * */
-bool port::getIEXTEN ()         { return port::localFlags.iexten; }
 void port::setIEXTEN (bool val) { port::localFlags.iexten = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getVEOF ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.VEOF as bool.
+ * End Of File character EOF is 'CTRL-D'
+ * It is recognized only in canonical (line) mode.
+ * When this is found in input, all bytes waiting to be read are immediately passed
+ * to the application without waiting for the end of the line.
+ * The EOF character itself is discarded.
+ * If EOF occurs at the beginning of a line, the read function that tries to read
+ * that line receives an End Of File (EOF) indication.
+ * Note that EOF results in End Of File only if it is at the beginning of a line !!!
+ * If it is preceded by one or more characters, it indicates only End Of Line (EOL).
+ * */
+bool port::getVEOF ()         { return port::specialCharFlags.veof; }
+/**
  * \brief function void port::setVEOF (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.VEOF.
  * Gives the End Of File character EOF. 'CTRL-D'
@@ -1420,144 +1926,241 @@ void port::setIEXTEN (bool val) { port::localFlags.iexten = (val) ? true : false
  * Note that EOF results in End Of File only if it is at the beginning of a line !!!
  * If it is preceded by one or more characters, it indicates only End Of Line (EOL).
  * */
-bool port::getVEOF ()         { return port::specialCharFlags.veof; }
 void port::setVEOF (bool val) { port::specialCharFlags.veof = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVEOL (bool val)
- * \param value as bool
+ * \brief function bool port::getVEOL ()
+ * \returns bool
  * \details
- * Action: changes termios.VEOL.
- * Indexes the EOL special character (Ctrl-@ or ASCII NULL), which is recognized on input
- * if the ICANON flag is set.
+ * Action: returns status of termios.VEOL as bool.
+ * EOL special character is (Ctrl-@ or ASCII NULL), which is:
+ * - recognized on input if the ICANON flag is set.
  * EOL is an additional line delimiter, like NL, and is not normally used.
  * */
 bool port::getVEOL ()         { return port::specialCharFlags.veol; }
+/**
+ * \brief function void port::setVEOL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VEOL.
+ * Indexes the EOL special character (Ctrl-@ or ASCII NULL), which is:
+ * - recognized on input if the ICANON flag is set.
+ * EOL is an additional line delimiter, like NL, and is not normally used.
+ * */
 void port::setVEOL (bool val) { port::specialCharFlags.veol = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVERASE (bool val)
- * \param value as bool
+ * \brief function bool port::getVERASE ()
+ * \returns bool
  * \details
- * Action: changes termios.VERASE.
- * Indexes the ERASE special character (Backspace), which is recognized on input
- * if the ICANON flag is set.
+ * Action: returns status of termios.VERASE as bool.
+ * ERASE special character is (Backspace), which is:
+ * - recognized on input if the ICANON flag is set.
  * The ERASE character does not erase beyond the beginning of the line as delimited
  * by a NL, EOL, EOF, or EOL2 character.
  * If the ICANON flag is set, the ERASE character is discarded when processed.
  * */
 bool port::getVERASE ()         { return port::specialCharFlags.verase; }
+/**
+ * \brief function void port::setVERASE (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VERASE.
+ * Indexes the ERASE special character (Backspace), which is:
+ * - recognized on input if the ICANON flag is set.
+ * The ERASE character does not erase beyond the beginning of the line as delimited
+ * by a NL, EOL, EOF, or EOL2 character.
+ * If the ICANON flag is set, the ERASE character is discarded when processed.
+ * */
 void port::setVERASE (bool val) { port::specialCharFlags.verase = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVINTR (bool val)
- * \param value as bool
+ * \brief function bool port::getVINTR ()
+ * \returns bool
  * \details
- * Action: changes termios.VINTR.
- * Indexes the INTR special character (Ctrl-c), which is recognized on input
- * if the ISIG flag is set.
+ * Action: returns status of termios.VINTR as bool.
+ * INTR special character (Ctrl-c), which is:
+ * - recognized on input if the ISIG flag is set.
  * The INTR character generates a SIGINT signal, which is sent to all processes
  * in the foreground process group for which the terminal is the controlling
  * terminal.
  * If the ISIG flag is set, the INTR character is discarded when processed.
  * */
 bool port::getVINTR ()         { return port::specialCharFlags.vintr; }
+/**
+ * \brief function void port::setVINTR (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VINTR.
+ * Indexes the INTR special character (Ctrl-c), which is:
+ * - recognized on input if the ISIG flag is set.
+ * The INTR character generates a SIGINT signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling
+ * terminal.
+ * If the ISIG flag is set, the INTR character is discarded when processed.
+ * */
 void port::setVINTR (bool val) { port::specialCharFlags.vintr = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVKILL (bool val)
- * \param value as bool
+ * \brief function bool port::getVKILL ()
+ * \returns bool
  * \details
- * Action: changes termios.VKILL.
- * Indexes the KILL special character (Ctrl-u), which is recognized on input
- * if the ICANON flag is set.
+ * Action: returns status of termios.VKILL as bool.
+ * KILL special character is (Ctrl-u), which is:
+ * - recognized on input if the ICANON flag is set.
  * The KILL character deletes the entire line, as delimited by a NL, EOL, EOF,
  * or EOL2 character.
  * If the ICANON flag is set, the KILL character is discarded when processed.
  * */
 bool port::getVKILL ()         { return port::specialCharFlags.vkill; }
+/**
+ * \brief function void port::setVKILL (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VKILL.
+ * Indexes the KILL special character (Ctrl-u), which is:
+ * - recognized on input if the ICANON flag is set.
+ * The KILL character deletes the entire line, as delimited by a NL, EOL, EOF,
+ * or EOL2 character.
+ * If the ICANON flag is set, the KILL character is discarded when processed.
+ * */
 void port::setVKILL (bool val) { port::specialCharFlags.vintr = (val) ? true : false; }
 /**
- * !
+ * \brief function bool port::getVMIN ()
+ * \returns bool
+ * \details
+ * Action: returns status of termios.VMIN as bool.
+ * MIN value is not a special character.
+ * The use of the MIN value is described in the discussion of noncanonical mode
+ * input processing in "ldterm Line Discipline" in General Programming
+ * Concepts: Writing and Debugging Programs.
+ * */
+bool port::getVMIN ()         { return port::specialCharFlags.vmin; }
+/**
  * \brief function void port::setVMIN (bool val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.VMIN.
  * Indexes the MIN value, which is not a special character.
  * The use of the MIN value is described in the discussion of noncanonical mode
  * input processing in:
- * "ldterm Line Discipline"
- * in:
- * General Programming Concepts: Writing and Debugging Programs.
+ * "ldterm Line Discipline" in General Programming Concepts: Writing and Debugging Programs.
  * */
-bool port::getVMIN ()         { return port::specialCharFlags.vmin; }
 void port::setVMIN (bool val) { port::specialCharFlags.vmin = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVQUIT (bool val)
- * \param value as bool
+ * \brief function bool port::getVQUIT ()
+ * \returns bool
  * \details
- * Action: changes termios.VQUIT.
- * Indexes the QUIT special character (Ctrl-\), which is recognized on input
- * if the ISIG flag is set.
+ * Action: returns status of termios.VQUIT as bool.
+ * QUIT special character is (Ctrl-\), which is:
+ * - recognized on input if the ISIG flag is set.
  * The QUIT character generates a SIGQUIT signal, which is sent to all processes
  * in the foreground process group for which the terminal is the controlling
  * terminal, and writes a core image file into the current working directory.
  * If the ISIG flag is set, the QUIT character is discarded when processed.
  * */
 bool port::getVQUIT ()         { return port::specialCharFlags.vquit; }
+/**
+ * \brief function void port::setVQUIT (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VQUIT.
+ * Indexes the QUIT special character (Ctrl-\), which is:
+ * - recognized on input if the ISIG flag is set.
+ * The QUIT character generates a SIGQUIT signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling
+ * terminal, and writes a core image file into the current working directory.
+ * If the ISIG flag is set, the QUIT character is discarded when processed.
+ * */
 void port::setVQUIT (bool val) { port::specialCharFlags.vquit = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVSTART (bool val)
- * \param value as bool
+ * \brief function bool port::getVSTART ()
+ * \returns bool
  * \details
- * Action: changes termios.VSTART.
- * Indexes the START special character (Ctrl-q), which is recognized:
- * on input if the IXON flag is set
- * and generated on output if the IXOFF flag is set.
+ * Action: returns status of termios.VSTART as bool.
+ * START special character is (Ctrl-q), which is:
+ * - recognized on input if the IXON flag is set
+ * - generated on output if the IXOFF flag is set.
  * The START character can be used to resume output that has been suspended
  * by a STOP character.
  * If the IXON flag is set, the START character is discarded when processed.
  * While output is not suspended, START characters are ignored and not read.
- * <IBM> VSTRT is an alias for VSTART.
+ * [reference IBM] VSTRT is an alias for VSTART.
  * */
 bool port::getVSTART ()         { return port::specialCharFlags.vstart; }
+/**
+ * \brief function void port::setVSTART (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VSTART.
+ * Indexes the START special character (Ctrl-q), which is:
+ * - recognized on input if the IXON flag is set
+ * - generated on output if the IXOFF flag is set.
+ * The START character can be used to resume output that has been suspended
+ * by a STOP character.
+ * If the IXON flag is set, the START character is discarded when processed.
+ * While output is not suspended, START characters are ignored and not read.
+ * [reference IBM] VSTRT is an alias for VSTART.
+ * */
 void port::setVSTART (bool val) { port::specialCharFlags.vstart = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVSTOP (bool val)
- * \param value as bool
+ * \brief function bool port::getVSTOP ()
+ * \returns bool
  * \details
- * Action: changes termios.VSTOP.
- * Indexes the STOP special character (Ctrl-s), which is recognized:
- * on input if the IXON flag is set
- * and generated on output if the IXOFF flag is set.
+ * Action: returns status of termios.VSTOP as bool.
+ * STOP special character is (Ctrl-s), which is:
+ * - recognized on input if the IXON flag is set
+ * - generated on output if the IXOFF flag is set.
  * The STOP character can be used to with terminals to prevent output
  * from disappearing before it can be read.
  * If the IXON flag is set, the STOP character is discarded when processed.
  * While output is suspended, STOP characters are ignored and not read.
  * */
 bool port::getVSTOP ()         { return port::specialCharFlags.vstop; }
+/**
+ * \brief function void port::setVSTOP (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VSTOP.
+ * Indexes the STOP special character (Ctrl-s), which is:
+ * - recognized on input if the IXON flag is set
+ * - generated on output if the IXOFF flag is set.
+ * The STOP character can be used to with terminals to prevent output
+ * from disappearing before it can be read.
+ * If the IXON flag is set, the STOP character is discarded when processed.
+ * While output is suspended, STOP characters are ignored and not read.
+ * */
 void port::setVSTOP (bool val) { port::specialCharFlags.vstop = (val) ? true : false; }
 /**
- * !
- * \brief function void port::setVSUSP (bool val)
- * \param value as bool
+ * \brief function bool port::getVSUSP ()
+ * \returns bool
  * \details
- * Action: changes termios.VSUSP.
- * Indexes the SUSP special character (Ctrl-z), which is recognized on input
- * if the ISIG flag is set.
+ * Action: returns status of termios.VSUSP as bool.
+ * SUSP special character is (Ctrl-z), which is:
+ * - recognized on input if the ISIG flag is set.
  * The SUSP character generates a SIGTSTP signal, which is sent to all processes
  * in the foreground process group for which the terminal is the controlling terminal.
  * If the ISIG flag is set, the SUSP character is discarded when processed.
  * */
 bool port::getVSUSP ()         { return port::specialCharFlags.vsusp; }
+/**
+ * \brief function void port::setVSUSP (bool val)
+ * \param val as bool
+ * \details
+ * Action: changes termios.VSUSP.
+ * Indexes the SUSP special character (Ctrl-z), which is:
+ * - recognized on input if the ISIG flag is set.
+ * The SUSP character generates a SIGTSTP signal, which is sent to all processes
+ * in the foreground process group for which the terminal is the controlling terminal.
+ * If the ISIG flag is set, the SUSP character is discarded when processed.
+ * */
 void port::setVSUSP (bool val) { port::specialCharFlags.vsusp = (val) ? true : false; }
 /**
- * !
+ * \brief function unsigned int port::getVTIME ()
+ * \returns unsigned int
+ * \details
+ * Action: returns status of termios.VTIME as unsigned int.
+ * */
+unsigned int port::getVTIME ()         { return port::specialCharFlags.vtime; }
+/**
  * \brief function void port::setVTIME (unsigned int val)
- * \param value as bool
+ * \param val as bool
  * \details
  * Action: changes termios.VTIME.
  * Indexes the TIME value, which is not a special character.
@@ -1565,7 +2168,6 @@ void port::setVSUSP (bool val) { port::specialCharFlags.vsusp = (val) ? true : f
  * input processing in "ldterm Line Discipline" in General Programming Concepts:
  * Writing and Debugging Programs.
  * */
-unsigned int port::getVTIME ()         { return port::specialCharFlags.vtime; }
 void port::setVTIME (unsigned int val) { port::specialCharFlags.vtime = (val > 0) ? val : 0; }
 
 serial_error* port::getError()       { return port::error; }

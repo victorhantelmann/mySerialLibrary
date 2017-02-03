@@ -1,0 +1,142 @@
+\hypertarget{classport_1_1inFlags}{}\section{port\+:\+:in\+Flags Class Reference}
+\label{classport_1_1inFlags}\index{port\+::in\+Flags@{port\+::in\+Flags}}
+
+
+Class containing the statuses of termios.\+c\+\_\+iflag, constants for \mbox{[} I\+N\+P\+UT \mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$serial\+\_\+routines.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classport_1_1inFlags_a2f5e99598ddb18261c996e873602b32a}{ignbrk}
+\begin{DoxyCompactList}\small\item\em bool ignbrk = Ignore B\+R\+E\+AK. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a47a2644d51869bc062b68f9eff0f4833}{brkint}
+\begin{DoxyCompactList}\small\item\em bool brkint = B\+R\+E\+AK causes the input and output queues to be flushed. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_acee23afe5adf90a8f50ad190eb30e70c}{ignpar}
+\begin{DoxyCompactList}\small\item\em bool ignpar = Ignore framing errors and parity errors. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a7d187e7323766b568aef6093e7b36a4e}{parmrk}
+\begin{DoxyCompactList}\small\item\em bool parmrk = If bit is set, input bytes with parity or framing errors are marked when passed to the program. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_af29fc919bb4310b36924ba6e3de5cda8}{inpck}
+\begin{DoxyCompactList}\small\item\em bool inpck = Enable input parity checking. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a73a9e0705199e32a3b3cce9aa8d8c6e0}{istrip}
+\begin{DoxyCompactList}\small\item\em bool istrip = Strip off eighth bit. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a934afcf2cf7cf062762fb7dac1cbadc5}{inlcr}
+\begin{DoxyCompactList}\small\item\em bool inlcr = Translate NL to CR on input. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_ae51c5a4ba8887f6d52e3f868e7bf341c}{igncr}
+\begin{DoxyCompactList}\small\item\em bool igncr = Ignore carriage return on input. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_aa2d6f6ad81fcb7e8e9516f62289f605f}{icrnl}
+\begin{DoxyCompactList}\small\item\em bool icrnl = Translate carriage return to newline on input (unless I\+G\+N\+CR is set). \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a721d59e230e1d380883557baca1af9dc}{ixon}
+\begin{DoxyCompactList}\small\item\em bool ixon = Enable X\+O\+N/\+X\+O\+FF flow control on output. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_ac62b0bf89cf9133983b14a850e41b14d}{ixoff}
+\begin{DoxyCompactList}\small\item\em bool ixoff = Enable X\+O\+N/\+X\+O\+FF flow control on input. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_a3ee201d186e1037b5c8df599c737b251}{ixany}
+\begin{DoxyCompactList}\small\item\em bool ixany = (X\+SI) Typing any character will restart stopped output. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1inFlags_af4f6bd13e2baf854c3b750f8b765ac42}{iutf8}
+\begin{DoxyCompactList}\small\item\em bool iutf8 = (since Linux 2.\+6.\+4) (not in P\+O\+S\+IX) Input is U\+T\+F8; this allows character-\/erase to be correctly performed in cooked mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class containing the statuses of termios.\+c\+\_\+iflag, constants for \mbox{[} I\+N\+P\+UT \mbox{]}. 
+
+\subsection{Member Data Documentation}
+\index{port\+::in\+Flags@{port\+::in\+Flags}!brkint@{brkint}}
+\index{brkint@{brkint}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{brkint}{brkint}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::brkint}\hypertarget{classport_1_1inFlags_a47a2644d51869bc062b68f9eff0f4833}{}\label{classport_1_1inFlags_a47a2644d51869bc062b68f9eff0f4833}
+
+
+bool brkint = B\+R\+E\+AK causes the input and output queues to be flushed. 
+
+c\+\_\+iflag.\+B\+R\+K\+I\+NT\index{port\+::in\+Flags@{port\+::in\+Flags}!icrnl@{icrnl}}
+\index{icrnl@{icrnl}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{icrnl}{icrnl}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::icrnl}\hypertarget{classport_1_1inFlags_aa2d6f6ad81fcb7e8e9516f62289f605f}{}\label{classport_1_1inFlags_aa2d6f6ad81fcb7e8e9516f62289f605f}
+
+
+bool icrnl = Translate carriage return to newline on input (unless I\+G\+N\+CR is set). 
+
+c\+\_\+iflag.\+I\+C\+R\+NL\index{port\+::in\+Flags@{port\+::in\+Flags}!ignbrk@{ignbrk}}
+\index{ignbrk@{ignbrk}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{ignbrk}{ignbrk}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::ignbrk}\hypertarget{classport_1_1inFlags_a2f5e99598ddb18261c996e873602b32a}{}\label{classport_1_1inFlags_a2f5e99598ddb18261c996e873602b32a}
+
+
+bool ignbrk = Ignore B\+R\+E\+AK. 
+
+c\+\_\+iflag.\+I\+G\+N\+B\+RK\index{port\+::in\+Flags@{port\+::in\+Flags}!igncr@{igncr}}
+\index{igncr@{igncr}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{igncr}{igncr}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::igncr}\hypertarget{classport_1_1inFlags_ae51c5a4ba8887f6d52e3f868e7bf341c}{}\label{classport_1_1inFlags_ae51c5a4ba8887f6d52e3f868e7bf341c}
+
+
+bool igncr = Ignore carriage return on input. 
+
+c\+\_\+iflag.\+I\+G\+N\+CR\index{port\+::in\+Flags@{port\+::in\+Flags}!ignpar@{ignpar}}
+\index{ignpar@{ignpar}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{ignpar}{ignpar}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::ignpar}\hypertarget{classport_1_1inFlags_acee23afe5adf90a8f50ad190eb30e70c}{}\label{classport_1_1inFlags_acee23afe5adf90a8f50ad190eb30e70c}
+
+
+bool ignpar = Ignore framing errors and parity errors. 
+
+c\+\_\+iflag.\+I\+G\+N\+P\+AR\index{port\+::in\+Flags@{port\+::in\+Flags}!inlcr@{inlcr}}
+\index{inlcr@{inlcr}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{inlcr}{inlcr}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::inlcr}\hypertarget{classport_1_1inFlags_a934afcf2cf7cf062762fb7dac1cbadc5}{}\label{classport_1_1inFlags_a934afcf2cf7cf062762fb7dac1cbadc5}
+
+
+bool inlcr = Translate NL to CR on input. 
+
+c\+\_\+iflag.\+I\+N\+L\+CR\index{port\+::in\+Flags@{port\+::in\+Flags}!inpck@{inpck}}
+\index{inpck@{inpck}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{inpck}{inpck}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::inpck}\hypertarget{classport_1_1inFlags_af29fc919bb4310b36924ba6e3de5cda8}{}\label{classport_1_1inFlags_af29fc919bb4310b36924ba6e3de5cda8}
+
+
+bool inpck = Enable input parity checking. 
+
+c\+\_\+iflag.\+I\+N\+P\+CK\index{port\+::in\+Flags@{port\+::in\+Flags}!istrip@{istrip}}
+\index{istrip@{istrip}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{istrip}{istrip}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::istrip}\hypertarget{classport_1_1inFlags_a73a9e0705199e32a3b3cce9aa8d8c6e0}{}\label{classport_1_1inFlags_a73a9e0705199e32a3b3cce9aa8d8c6e0}
+
+
+bool istrip = Strip off eighth bit. 
+
+c\+\_\+iflag.\+I\+S\+T\+R\+IP\index{port\+::in\+Flags@{port\+::in\+Flags}!iutf8@{iutf8}}
+\index{iutf8@{iutf8}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{iutf8}{iutf8}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::iutf8}\hypertarget{classport_1_1inFlags_af4f6bd13e2baf854c3b750f8b765ac42}{}\label{classport_1_1inFlags_af4f6bd13e2baf854c3b750f8b765ac42}
+
+
+bool iutf8 = (since Linux 2.\+6.\+4) (not in P\+O\+S\+IX) Input is U\+T\+F8; this allows character-\/erase to be correctly performed in cooked mode. 
+
+c\+\_\+iflag.\+I\+U\+T\+F8\index{port\+::in\+Flags@{port\+::in\+Flags}!ixany@{ixany}}
+\index{ixany@{ixany}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{ixany}{ixany}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::ixany}\hypertarget{classport_1_1inFlags_a3ee201d186e1037b5c8df599c737b251}{}\label{classport_1_1inFlags_a3ee201d186e1037b5c8df599c737b251}
+
+
+bool ixany = (X\+SI) Typing any character will restart stopped output. 
+
+c\+\_\+iflag.\+I\+X\+A\+NY\index{port\+::in\+Flags@{port\+::in\+Flags}!ixoff@{ixoff}}
+\index{ixoff@{ixoff}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{ixoff}{ixoff}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::ixoff}\hypertarget{classport_1_1inFlags_ac62b0bf89cf9133983b14a850e41b14d}{}\label{classport_1_1inFlags_ac62b0bf89cf9133983b14a850e41b14d}
+
+
+bool ixoff = Enable X\+O\+N/\+X\+O\+FF flow control on input. 
+
+c\+\_\+iflag.\+I\+X\+O\+FF\index{port\+::in\+Flags@{port\+::in\+Flags}!ixon@{ixon}}
+\index{ixon@{ixon}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{ixon}{ixon}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::ixon}\hypertarget{classport_1_1inFlags_a721d59e230e1d380883557baca1af9dc}{}\label{classport_1_1inFlags_a721d59e230e1d380883557baca1af9dc}
+
+
+bool ixon = Enable X\+O\+N/\+X\+O\+FF flow control on output. 
+
+c\+\_\+iflag.\+I\+X\+ON\index{port\+::in\+Flags@{port\+::in\+Flags}!parmrk@{parmrk}}
+\index{parmrk@{parmrk}!port\+::in\+Flags@{port\+::in\+Flags}}
+\subsubsection[{\texorpdfstring{parmrk}{parmrk}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::in\+Flags\+::parmrk}\hypertarget{classport_1_1inFlags_a7d187e7323766b568aef6093e7b36a4e}{}\label{classport_1_1inFlags_a7d187e7323766b568aef6093e7b36a4e}
+
+
+bool parmrk = If bit is set, input bytes with parity or framing errors are marked when passed to the program. 
+
+c\+\_\+iflag.\+P\+A\+R\+M\+RK
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+serial\+\_\+routines.\+h\end{DoxyCompactItemize}

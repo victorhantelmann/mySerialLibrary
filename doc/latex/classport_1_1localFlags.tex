@@ -1,0 +1,106 @@
+\hypertarget{classport_1_1localFlags}{}\section{port\+:\+:local\+Flags Class Reference}
+\label{classport_1_1localFlags}\index{port\+::local\+Flags@{port\+::local\+Flags}}
+
+
+Class containing the statuses of termios.\+c\+\_\+lflag, constants for \mbox{[} L\+O\+C\+AL M\+O\+D\+ES \mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$serial\+\_\+routines.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classport_1_1localFlags_a7f2f72947d3b62649d50d4d7931d78bd}{isig}
+\begin{DoxyCompactList}\small\item\em bool isig = When any of the characters I\+N\+TR, Q\+U\+IT, S\+U\+SP, or D\+S\+U\+SP are received, generate the corresponding signal. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_ab26f2ad4df346449c9cde1d060cb0e98}{icanon}
+\begin{DoxyCompactList}\small\item\em bool icanon = Enable canonical mode. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_a2c231fce7fa4a5ec4125af1d1ae31da5}{echo}
+\begin{DoxyCompactList}\small\item\em bool echo = Echo input characters. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_aaf0665b2b3f32a5c423924acdc26c0bf}{echoe}
+\begin{DoxyCompactList}\small\item\em bool echoe = If I\+C\+A\+N\+ON is also set, the E\+R\+A\+SE character erases the preceding input character, and W\+E\+R\+A\+SE erases the preceding word. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_ac68cbd1d58782fb5bc27ba85af026c30}{echok}
+\begin{DoxyCompactList}\small\item\em bool echok = If I\+C\+A\+N\+ON is also set, the K\+I\+LL character erases the current line. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_a2a27e1978747d34ee03ea71ca0af2818}{echonl}
+\begin{DoxyCompactList}\small\item\em bool echonl = If I\+C\+A\+N\+ON is also set, echo the NL character even if E\+C\+HO is not set. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_a889a392c648e398126db96326ac44114}{noflsh}
+\begin{DoxyCompactList}\small\item\em bool noflsh = Disable flushing the input and output queues when generating signals for the I\+NT, Q\+U\+IT, and S\+U\+SP characters. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_a12ac0107b1732e3299333926fdc4829e}{tostop}
+\begin{DoxyCompactList}\small\item\em bool tostop = Send the S\+I\+G\+T\+T\+OU signal to the process group of a background process which tries to write to its controlling terminal. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1localFlags_a07fb7cb6582c8b074a20461f5702ac35}{iexten}
+\begin{DoxyCompactList}\small\item\em bool iexten = Enable implementation-\/defined input processing. This flag, as well as I\+C\+A\+N\+ON must be enabled for the special characters E\+O\+L2, L\+N\+E\+XT, R\+E\+P\+R\+I\+NT, W\+E\+R\+A\+SE to be interpreted, and for the I\+U\+C\+LC flag to be Active. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class containing the statuses of termios.\+c\+\_\+lflag, constants for \mbox{[} L\+O\+C\+AL M\+O\+D\+ES \mbox{]}. 
+
+\subsection{Member Data Documentation}
+\index{port\+::local\+Flags@{port\+::local\+Flags}!echo@{echo}}
+\index{echo@{echo}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{echo}{echo}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::echo}\hypertarget{classport_1_1localFlags_a2c231fce7fa4a5ec4125af1d1ae31da5}{}\label{classport_1_1localFlags_a2c231fce7fa4a5ec4125af1d1ae31da5}
+
+
+bool echo = Echo input characters. 
+
+c\+\_\+lflag.\+E\+C\+HO\index{port\+::local\+Flags@{port\+::local\+Flags}!echoe@{echoe}}
+\index{echoe@{echoe}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{echoe}{echoe}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::echoe}\hypertarget{classport_1_1localFlags_aaf0665b2b3f32a5c423924acdc26c0bf}{}\label{classport_1_1localFlags_aaf0665b2b3f32a5c423924acdc26c0bf}
+
+
+bool echoe = If I\+C\+A\+N\+ON is also set, the E\+R\+A\+SE character erases the preceding input character, and W\+E\+R\+A\+SE erases the preceding word. 
+
+c\+\_\+lflag.\+E\+C\+H\+OE\index{port\+::local\+Flags@{port\+::local\+Flags}!echok@{echok}}
+\index{echok@{echok}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{echok}{echok}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::echok}\hypertarget{classport_1_1localFlags_ac68cbd1d58782fb5bc27ba85af026c30}{}\label{classport_1_1localFlags_ac68cbd1d58782fb5bc27ba85af026c30}
+
+
+bool echok = If I\+C\+A\+N\+ON is also set, the K\+I\+LL character erases the current line. 
+
+c\+\_\+lflag.\+E\+C\+H\+OK\index{port\+::local\+Flags@{port\+::local\+Flags}!echonl@{echonl}}
+\index{echonl@{echonl}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{echonl}{echonl}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::echonl}\hypertarget{classport_1_1localFlags_a2a27e1978747d34ee03ea71ca0af2818}{}\label{classport_1_1localFlags_a2a27e1978747d34ee03ea71ca0af2818}
+
+
+bool echonl = If I\+C\+A\+N\+ON is also set, echo the NL character even if E\+C\+HO is not set. 
+
+c\+\_\+lflag.\+E\+C\+H\+O\+NL\index{port\+::local\+Flags@{port\+::local\+Flags}!icanon@{icanon}}
+\index{icanon@{icanon}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{icanon}{icanon}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::icanon}\hypertarget{classport_1_1localFlags_ab26f2ad4df346449c9cde1d060cb0e98}{}\label{classport_1_1localFlags_ab26f2ad4df346449c9cde1d060cb0e98}
+
+
+bool icanon = Enable canonical mode. 
+
+c\+\_\+lflag.\+I\+C\+A\+N\+ON\index{port\+::local\+Flags@{port\+::local\+Flags}!iexten@{iexten}}
+\index{iexten@{iexten}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{iexten}{iexten}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::iexten}\hypertarget{classport_1_1localFlags_a07fb7cb6582c8b074a20461f5702ac35}{}\label{classport_1_1localFlags_a07fb7cb6582c8b074a20461f5702ac35}
+
+
+bool iexten = Enable implementation-\/defined input processing. This flag, as well as I\+C\+A\+N\+ON must be enabled for the special characters E\+O\+L2, L\+N\+E\+XT, R\+E\+P\+R\+I\+NT, W\+E\+R\+A\+SE to be interpreted, and for the I\+U\+C\+LC flag to be Active. 
+
+c\+\_\+lflag.\+I\+E\+X\+T\+EN\index{port\+::local\+Flags@{port\+::local\+Flags}!isig@{isig}}
+\index{isig@{isig}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{isig}{isig}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::isig}\hypertarget{classport_1_1localFlags_a7f2f72947d3b62649d50d4d7931d78bd}{}\label{classport_1_1localFlags_a7f2f72947d3b62649d50d4d7931d78bd}
+
+
+bool isig = When any of the characters I\+N\+TR, Q\+U\+IT, S\+U\+SP, or D\+S\+U\+SP are received, generate the corresponding signal. 
+
+c\+\_\+lflag.\+I\+S\+IG\index{port\+::local\+Flags@{port\+::local\+Flags}!noflsh@{noflsh}}
+\index{noflsh@{noflsh}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{noflsh}{noflsh}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::noflsh}\hypertarget{classport_1_1localFlags_a889a392c648e398126db96326ac44114}{}\label{classport_1_1localFlags_a889a392c648e398126db96326ac44114}
+
+
+bool noflsh = Disable flushing the input and output queues when generating signals for the I\+NT, Q\+U\+IT, and S\+U\+SP characters. 
+
+c\+\_\+lflag.\+N\+O\+F\+L\+SH\index{port\+::local\+Flags@{port\+::local\+Flags}!tostop@{tostop}}
+\index{tostop@{tostop}!port\+::local\+Flags@{port\+::local\+Flags}}
+\subsubsection[{\texorpdfstring{tostop}{tostop}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::local\+Flags\+::tostop}\hypertarget{classport_1_1localFlags_a12ac0107b1732e3299333926fdc4829e}{}\label{classport_1_1localFlags_a12ac0107b1732e3299333926fdc4829e}
+
+
+bool tostop = Send the S\+I\+G\+T\+T\+OU signal to the process group of a background process which tries to write to its controlling terminal. 
+
+c\+\_\+lflag.\+T\+O\+S\+T\+OP
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+serial\+\_\+routines.\+h\end{DoxyCompactItemize}

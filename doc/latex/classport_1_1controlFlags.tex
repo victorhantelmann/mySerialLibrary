@@ -1,0 +1,90 @@
+\hypertarget{classport_1_1controlFlags}{}\section{port\+:\+:control\+Flags Class Reference}
+\label{classport_1_1controlFlags}\index{port\+::control\+Flags@{port\+::control\+Flags}}
+
+
+Class containing the statuses of termios.\+c\+\_\+cflag, constants for \mbox{[} C\+O\+N\+T\+R\+OL \mbox{]}.  
+
+
+
+
+{\ttfamily \#include $<$serial\+\_\+routines.\+h$>$}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classport_1_1controlFlags_a39ce003580b2d56b84309cd390b03032}{csize}
+\begin{DoxyCompactList}\small\item\em std\+::string csize = Form feed delay mask. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_a0d87b6aea74b52992afe31351a741be2}{cstopb}
+\begin{DoxyCompactList}\small\item\em bool cstopb = Set two stop bits, rather than one. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_a8873135a87a62ead09cc4084cbf0efef}{cread}
+\begin{DoxyCompactList}\small\item\em bool cread = Enable receiver. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_af3c39480a9de7dd42a34d282ca73cdee}{parenb}
+\begin{DoxyCompactList}\small\item\em bool parenb = Enable parity generation on output and parity checking for input. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_a82805f8b5e019f8d7bb104aac8bf3285}{parodd}
+\begin{DoxyCompactList}\small\item\em bool parodd = If set, then parity for input and output is O\+DD, otherwise E\+V\+EN parity is used. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_a389ac9dccd386fa6b69347780b3c068e}{hupcl}
+\begin{DoxyCompactList}\small\item\em bool hupcl = (hang up) Lower modem control lines after last process closes the device. \end{DoxyCompactList}\item 
+bool \hyperlink{classport_1_1controlFlags_a2505d3e0ee5aad520e432edd56090ca4}{clocal}
+\begin{DoxyCompactList}\small\item\em bool clocal = Ignore modem control lines. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class containing the statuses of termios.\+c\+\_\+cflag, constants for \mbox{[} C\+O\+N\+T\+R\+OL \mbox{]}. 
+
+\subsection{Member Data Documentation}
+\index{port\+::control\+Flags@{port\+::control\+Flags}!clocal@{clocal}}
+\index{clocal@{clocal}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{clocal}{clocal}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::clocal}\hypertarget{classport_1_1controlFlags_a2505d3e0ee5aad520e432edd56090ca4}{}\label{classport_1_1controlFlags_a2505d3e0ee5aad520e432edd56090ca4}
+
+
+bool clocal = Ignore modem control lines. 
+
+c\+\_\+cflag.\+C\+L\+O\+C\+AL\index{port\+::control\+Flags@{port\+::control\+Flags}!cread@{cread}}
+\index{cread@{cread}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{cread}{cread}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::cread}\hypertarget{classport_1_1controlFlags_a8873135a87a62ead09cc4084cbf0efef}{}\label{classport_1_1controlFlags_a8873135a87a62ead09cc4084cbf0efef}
+
+
+bool cread = Enable receiver. 
+
+c\+\_\+cflag.\+C\+R\+E\+AD\index{port\+::control\+Flags@{port\+::control\+Flags}!csize@{csize}}
+\index{csize@{csize}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{csize}{csize}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string port\+::control\+Flags\+::csize}\hypertarget{classport_1_1controlFlags_a39ce003580b2d56b84309cd390b03032}{}\label{classport_1_1controlFlags_a39ce003580b2d56b84309cd390b03032}
+
+
+std\+::string csize = Form feed delay mask. 
+
+Character size mask. Values are C\+S5, C\+S6, C\+S7, or C\+S8. 
+
+c\+\_\+cflag.\+C\+S\+I\+ZE\index{port\+::control\+Flags@{port\+::control\+Flags}!cstopb@{cstopb}}
+\index{cstopb@{cstopb}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{cstopb}{cstopb}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::cstopb}\hypertarget{classport_1_1controlFlags_a0d87b6aea74b52992afe31351a741be2}{}\label{classport_1_1controlFlags_a0d87b6aea74b52992afe31351a741be2}
+
+
+bool cstopb = Set two stop bits, rather than one. 
+
+c\+\_\+cflag.\+C\+S\+T\+O\+PB\index{port\+::control\+Flags@{port\+::control\+Flags}!hupcl@{hupcl}}
+\index{hupcl@{hupcl}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{hupcl}{hupcl}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::hupcl}\hypertarget{classport_1_1controlFlags_a389ac9dccd386fa6b69347780b3c068e}{}\label{classport_1_1controlFlags_a389ac9dccd386fa6b69347780b3c068e}
+
+
+bool hupcl = (hang up) Lower modem control lines after last process closes the device. 
+
+c\+\_\+cflag.\+H\+U\+P\+CL\index{port\+::control\+Flags@{port\+::control\+Flags}!parenb@{parenb}}
+\index{parenb@{parenb}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{parenb}{parenb}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::parenb}\hypertarget{classport_1_1controlFlags_af3c39480a9de7dd42a34d282ca73cdee}{}\label{classport_1_1controlFlags_af3c39480a9de7dd42a34d282ca73cdee}
+
+
+bool parenb = Enable parity generation on output and parity checking for input. 
+
+c\+\_\+cflag.\+P\+A\+R\+E\+NB\index{port\+::control\+Flags@{port\+::control\+Flags}!parodd@{parodd}}
+\index{parodd@{parodd}!port\+::control\+Flags@{port\+::control\+Flags}}
+\subsubsection[{\texorpdfstring{parodd}{parodd}}]{\setlength{\rightskip}{0pt plus 5cm}bool port\+::control\+Flags\+::parodd}\hypertarget{classport_1_1controlFlags_a82805f8b5e019f8d7bb104aac8bf3285}{}\label{classport_1_1controlFlags_a82805f8b5e019f8d7bb104aac8bf3285}
+
+
+bool parodd = If set, then parity for input and output is O\+DD, otherwise E\+V\+EN parity is used. 
+
+c\+\_\+cflag.\+P\+A\+R\+O\+DD
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+serial\+\_\+routines.\+h\end{DoxyCompactItemize}
